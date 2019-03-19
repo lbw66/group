@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2019/03/19HomeWork</title>
+</head>
+<body>
+<script>
+    function ajax(opction) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200 || xhr.status === 304) {
+                    console.log(JSON.parse(xhr.responseText));
+                }
+            }
+        };
+        xhr.open(opction.type, opction.URL, opction.ansyc);
+        xhr.send();
+    }
+
+    ajax({
+        type: "get",
+        URL: "haha.json",
+        ansyc: true
+    });
+</script>
+</body>
+</html>
