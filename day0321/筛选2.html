@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            background:#f8f8f8;
+        }
+        .box {
+            height: 600px;
+            width: 600px;
+            margin: 50px auto;
+            background:#fff;
+        }
+        #top {
+            width: 100%;
+            height:50px;
+            line-height: 50px;
+        }
+        #top li{
+            display: none;
+            width: 100px;
+            text-align: center;
+            background:orangered;
+        }
+        #ul1{
+            width: 100%;
+            height:50px;
+            line-height: 50px;
+            background:#ccc;
+        }
+        #ul1 li {
+            display:inline-block;
+            width: 100px;
+            text-align: center;
+        }
+        #ul2{
+            height:100px;
+            width: 100%;
+        }
+        #ul2 li{
+            width: 100%;
+            height:50px;
+            line-height: 50px;
+        }
+        #ul2 span {
+            display: inline-block;
+            width: 24%;
+            overflow: hidden;
+            -ms-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .on{
+            background:#2CB7DB;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul id="top">
+            <li>男</li>
+            <li>女</li>
+            <li>人妖</li>
+        </ul>
+        <ul id="ul1">
+            <li>男</li>
+            <li>女</li>
+            <li>人妖</li>
+        </ul>
+        <ul id="ul2">
+        </ul>
+    </div>
+
+
+    <script>
+        window.onload = function () {
+            var pArr = [{
+                name: "小李",
+                sex: "男",
+                age: 18,
+                like: "敲代码",
+                infomation: "我是小李我是小李我是小李我是小李我是小李我是小李我是小李"
+            },
+                {
+                    name: "张三",
+                    sex: "女",
+                    age: 32,
+                    like: "看电视",
+                    infomation: "我是张三我是小李我是小李我是小李我是小李我是小李我是小李"
+                },
+                {
+                    name: "李四",
+                    sex: "男",
+                    age: 21,
+                    like: "",
+                    infomation: "我是李四我是小李我是小李我是小李我是小李我是小李我是小李"
+                },
+                {
+                    name: "王五",
+                    sex: "男",
+                    age: 32,
+                    like: "看书",
+                    infomation: "我是王五我是小李我是小李我是小李我是小李我是小李我是小李"
+                },
+                {
+                    name: "GAY",
+                    sex: "人妖",
+                    age: 42,
+                    like: "gay",
+                    infomation: "我是gay我是小李我是小李我是小李我是小李我是小李我是小李"
+                },
+            ];
+            // 将类数组转化为数组
+            function listToArray(nodelist) {
+                return Array.prototype.slice.call(nodelist);
+            }
+            // 装被选中的类型
+            var activeArr = [];
+            // 初始化
+            showAll(["男", "女", "人妖"]);
+            var top = document.getElementById("top");
+            var tops = top.getElementsByTagName("li");
+            var ul1 = document.getElementById("ul1");
+            var li1 = ul1.getElementsByTagName("li");
+            // 添加事件
+            for(var i = 0;i<li1.length;i++){
+                // li1点击
+                li1[i].addEventListener("click",function(event){
+                    var t = this.innerText;
+                    var tIndex = activeArr.indexOf(t);
+                    if(tIndex !== -1){
+                        activeArr.splice(tIndex,1);
+                    }else{
+                        activeArr.push(t);
+                    }
+                    showAll(activeArr);
+                    onTab(activeArr);
+                },false);
+                // 隐藏内容点击
+                tops[i].addEventListener("click",function(event){
+                    var t = this.innerText;
+                    var tIndex = activeArr.indexOf(t);
+                    if(tIndex !== -1){
+                        activeArr.splice(tIndex,1);
+                    }
+                    showAll(activeArr);
+                    onTab(activeArr);
+                },false)
+            }
+
+
+            //点击效果
+            function onTab(targetArr){
+                // 选中
+                listToArray(li1).forEach(function(item,index){
+                    if(targetArr.indexOf(item.innerHTML) !== -1){
+                        item.classList.add("on");
+                    }else{
+                        item.classList.remove("on");
+                    }
+                });
+
+                // 显示隐藏内容
+                listToArray(tops).forEach(function(item,index){
+                    var spanText = item.innerHTML;
+                    if(targetArr.indexOf(spanText) !== -1){
+                        item.style.display = "inline-block";
+                    }else{
+                        item.style.display = "none";
+                    }
+                });
+                if(activeArr.length === 0){
+                    showAll(["男", "女", "人妖"]);
+                }
+            }
+
+            // 显示列表内容
+            function showAll(targetArr) {
+                var html = "";
+                targetArr.forEach(function (item, index) {
+                    pArr.forEach(function (itemA, indexA) {
+                        if (item === itemA.sex) {
+                            html += "<li>" +
+                                "<span>姓名：" + itemA.name + "</span>" +
+                                " <span>年龄：" + itemA.age + "</span>" +
+                                " <span>性别：" + itemA.sex + "</span>" +
+                                " <span>个人信息：" + itemA.infomation + "</span>" +
+                                " </li>"
+                        }
+                    });
+                });
+                document.getElementById("ul2").innerHTML = html;
+                console.log(1);
+            }
+        }
+    </script>
+</body>
+</html>

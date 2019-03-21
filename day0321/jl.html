@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节流</title>
+
+</head>
+<body style="height:6000px;background:#ccc">
+
+</body>
+<script>
+
+    //     var throttle = function(func, delay) {
+    // 　　var prev = Date.now();
+    // 　　return function() {
+    // 　　　　var context = this;
+    // 　　　　var args = arguments;
+    // 　　　　var now = Date.now();
+    // 　　　　if (now - prev >= delay) {
+    // 　　　　　　func.apply(context, args);
+    // 　　　　　　prev = Date.now();
+    // 　　　　}
+    // 　　}
+    // }
+    // var throttle = function(func,time){
+    //     var time = Date.now();
+    //     return function(){
+    //         var context = this;
+    //         var args = arguments;
+    //         var now = Date.now();
+    //         if(now - time >= time){
+    //             func.apply(context,args);
+    //             time = Date.now();
+    //         }
+    //     }
+    // }
+    // var throttle = function(func,time){
+    //     var times = Date.now();
+    //     return function(){
+    //         var context = this;
+    //         var args = arguments;
+    //         var now = Date.now();
+    //         if(now - times >= time){
+    //             func.apply(context,args);
+    //             times = Date.now();
+    //         }
+    //     }
+    // }
+
+    // var throttle = function(func,time){
+    //     var times = Date.now();
+    //     return function(){
+    //         var context = this;
+    //         var args = arguments;
+    //         var now = Date.now();
+    //         if(now - times >=time){
+    //             func.apply(context,args);
+    //             times = Date.now();
+    //         }
+    //     }
+    // }
+
+    // var throttle = function(func,time){
+    //     var times = Date.now();
+    //     return function(){
+    //         var context = this;
+    //         var args = arguments;
+    //         var now = Date.now();
+    //         if(now - times >= time){
+    //             func.apply(context,args);
+    //             times = Date.now();
+    //         }
+    //     }
+    // }
+    // var throttle = function(func,time){
+    //     var times = Date.now();
+    //     return function(){
+    //         var context = this;
+    //         var args = arguments;
+    //         var now = Date.now();
+    //         if(now - times >= time){
+    //             func.apply(context,args);
+    //             times =Date.now();
+    //         }
+    //     }
+    // }
+
+    // var throttle = function(func,time){
+    //     var times = Date.now();
+    //     return function(){
+    //         var context = this;
+    //         var args = arguments;
+    //         var now = Date.now();
+    //         if(now -times >= now()){
+    //             func.apply(context,args);
+    //             times = Date.now();
+    //         }
+    //     }
+    // };
+
+    /*    var throttle = function(func ,time){
+            var times = Date.now();
+            return function(){
+                var context = this;
+                var args = arguments;
+                var now = Date.now();
+                if(now - times >= time){
+                    func.apply(context,args);
+                    times = Date.now();
+                }
+            }
+        };*/
+  /*  var throttle = function(func ,time){
+        var times = Date.now();
+        return function(){
+            var context = this;
+            var args = arguments;
+            var now = Date.now();
+            if(now - times >= time){
+                func.apply(context,args);
+                times = Date.now();
+            }
+        }
+    }*/
+  // var throttle = function(func ,time){
+  //     var times = Date.now();
+  //     return function(){
+  //         var context = this;
+  //         var args = arguments;
+  //         var now = Date.now();
+  //         if(now - times >=time){
+  //             func.apply(context,args);
+  //             times = Date.now();
+  //
+  //         }
+  //     }
+  // };
+ /*   var throttle = function(func, time){
+        var times = Date.now();
+        return function(){
+            var c = this;
+            var a = arguments;
+            var now = Date.now();
+            if(now - times >=time){
+                func.apply(c,a);
+                times = Date.now();
+            }
+        }
+    };*/
+    /*   var throttle = function(func, time){
+           var times = Date.now();
+           return function(){
+               var c = this;
+               var a = arguments;
+               var now = Date.now();
+               if(now - times >=time){
+                   func.apply(c,a);
+                   times = Date.now();
+               }
+           }
+       };*/
+    /*   var throttle = function(func, time){
+        var times = Date.now();
+        return function(){
+            var c = this;
+            var a = arguments;
+            var now = Date.now();
+            if(now - times >=time){
+                func.apply(c,a);
+                times = Date.now();
+            }
+        }
+    };*/
+    /*   var throttle = function(func, time){
+        var times = Date.now();
+        return function(){
+            var c = this;
+            var a = arguments;
+            var now = Date.now();
+            if(now - times >=time){
+                func.apply(c,a);
+                times = Date.now();
+            }
+        }
+    };*//*   var throttle = function(func, time){
+        var times = Date.now();
+        return function(){
+            var c = this;
+            var a = arguments;
+            var now = Date.now();
+            if(now - times >=time){
+                func.apply(c,a);
+                times = Date.now();
+            }
+        }
+    };*/
+
+    function handle() {
+        console.log(Math.random());
+    }
+
+    window.addEventListener('scroll', throttle(handle, 1000));
+</script>
+</html>

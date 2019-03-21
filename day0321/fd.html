@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖</title>
+</head>
+<body style="height:2000px;background:#ccc">
+<script>
+    window.onload = function () {
+        // function debounce(func, time) {
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },time);
+        //     }
+        // }
+        // function debounce (func,time){
+        //     var timer = null;
+        //     return function () {
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },time)
+        //     };
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }// function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+        // function debounce (func ,time){
+        //     var timer = null;
+        //     return function(){
+        //         var self = this;
+        //         var args = arguments;
+        //         clearTimeout(timer);
+        //         timer = setTimeout(()=>{
+        //             func.apply(self,args);
+        //         },1000)
+        //     }
+        // }
+
+        function handle() {
+            console.log(Math.random());
+        }
+
+        window.addEventListener('scroll', debounce(handle, 1000));
+    }
+
+</script>
+</body>
+</html>
