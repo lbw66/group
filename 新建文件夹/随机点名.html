@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机抽奖</title>
+    <script src="jquery-1.2.3/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            bottom: 0;
+            border: 0;
+        }
+
+        button {
+            display: block;
+        }
+
+        div {
+            margin: 200px auto;
+            width: 300px;
+            height: 360px;
+        }
+
+        ul {
+            overflow: hidden;
+            width: 300px;
+        }
+
+        li {
+            background: orange;
+            margin-top: 30px;
+            float: left;
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            text-align: center;
+            margin-right: 10px;
+            box-sizing: border-box;
+            list-style: none;
+            border: orangered solid 1px;
+        }
+
+        .haha {
+            background: powderblue;
+        }
+
+        span {
+            color: orange;
+
+        }
+
+        .red {
+            background: pink;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button>抽奖</button>
+    <ul>
+        <li class="red">1等奖</li>
+        <li>2等奖</li>
+        <li>3等奖</li>
+        <li>4等奖</li>
+        <li>5等奖</li>
+        <li>6等奖</li>
+        <li>7等奖</li>
+        <li>8等奖</li>
+        <li>9等奖</li>
+    </ul>
+    <p>您抽到了<span>1</span>等奖</p>
+</div>
+<script type="text/html">
+    window.onload = function () {
+    var btn = document.querySelector('button');
+    var lis = document.querySelectorAll('li');
+    var span = document.querySelector('span');
+    var timer = null;
+    btn.onclick = function () {
+    clearInterval(timer);
+    if (this.innerText === "抽奖") {
+    this.innerText = "停止";
+    btn.className = "haha";
+    timer = setInterval(function () {
+    var cont = Math.round(Math.random() * 8);
+    for (var j = 0; j < lis.length; j++) {
+    lis[j].className = "";
+    }
+    lis[cont].className = "red";
+    span.innerText = cont + 1;
+    }, 300)
+    } else {
+    clearInterval(timer);
+    this.innerText = "抽奖";
+    this.className = "";
+    }
+    }
+    }
+</script>
+<script>
+    $(function () {
+        var $timer = null;
+        var $lis = $('li');
+        var $span = $('span');
+        $('button').click(function () {
+            clearInterval($timer);
+            if ($(this).text() === "抽奖") {
+                $(this).text("停止");
+                $(this).attr('class', "haha");
+                $timer = setInterval(function () {
+                    var $cont = Math.round(Math.random() * 8);
+                    for (let i = 0; i < $lis.length; i++) {
+                        $($lis[i]).attr('class', "");
+                    }
+                    $($span).text($cont + 1);
+                    $($lis[$cont]).attr('class', "red");
+                }, 500);
+            } else {
+                clearInterval($timer);
+                $(this).text("抽奖");
+                $(this).attr('class', "");
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    window.onload = function () {
+
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            }
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+
+        window.onscroll = throttle(function () {
+            console.log(1);
+        }, 1000);
+
+        //节流
+        function throttle(fn, time) {
+            //设置一个初始值
+            var beforeTime = 0;
+            //返回一个函数
+            return function () {
+                //保存this和arguments类数组
+                var self = this;
+                var args = arguments;
+                //获取现在的时间戳
+                var currTime = +new Date();
+                //如果现在时间戳的值减去初始时间戳的值大于设置的time（1000）则执行函数，否则不执行
+                if (currTime - beforeTime >= time) {
+                    //执行函数，apply改变指向为self
+                    fn.apply(self, args);
+                    //将现在的时间戳赋给初始值
+                    beforeTime = currTime;
+                }
+            };
+
+            //防抖
+            function debounce(fn, time) {
+                //创建一个储存定时器的变量
+                var timer = null;
+                //返回一个函数
+                return function () {
+                    //保存this和arguments类数组
+                    var self = this;
+                    var args = arguments;
+                    //关闭timer定时器，所以会立即清除timer以及里面的方法
+                    clearTimeout(timer);
+                    //给timer重新添加一个定时器,每过time时间执行一次里面的方法
+                    timer = setTimeout(function () {
+                        //apply改变指向为self
+                        fn.apply(self, args)
+                    }, time)
+                }
+
+            }
+
+        }
+    }
+</script>
+
+</html>
