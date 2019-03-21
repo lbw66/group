@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 5000px;
+            background: #fdffdd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        // //节流
+        // window.onscroll =function () {
+        //     this
+        // }
+        // //throttle=节流
+        //  window.onscroll = throttle(function() {
+        //     console.log(1);
+        //  }, 1000);//时间设置
+        // //throttle里面( fn time )
+        // function throttle(fn,time) {
+        //  var  a =0;
+        //  return function () {
+        //      //让b =this
+        //      //c =arguments函数重载
+        //      var b = this;
+        //      var c =arguments;
+        //      //+ new Date()得到毫秒 =.get Time
+        //      var d = +new Date();
+        //
+        //      if(d - a>=time){
+        //          //调用fn方法
+        //          fn.apply(b, c);
+        //
+        //          a = d;
+        //      }
+        //  }
+        //  }
+
+
+
+        //-------------------------------------------------------------------------------------------//
+        //   //防抖
+        //   //debounce(fn ,time,)
+        //   window.onscroll = debounce(function() {
+        //       console.log(1);
+        //   }, 1000);//时间设置
+        //   // window.onscroll = function() {
+        //   //     }
+        //   //防抖
+        //   //debounce里面的方法
+        //   function debounce(fn, time) {
+        //       //var一个c=null
+        //       var c = null;
+        //       //回调
+        //       return function() {
+        //           clearTimeout(c);
+        //           //(fn ,time)
+        //           c = setTimeout(fn, time);
+        //       }
+        //   }
+    </script>
+    <script>
+        // //节流
+        // window.onscroll = function() {
+        //     this
+        // }
+        // window.onscroll = throttle(function() {
+        //     console.log(1);
+
+        // }, 1000);
+
+        // // console.log(Math.random());
+        // //节流
+
+        // function throttle(fn, time) {
+        //     var beforeTime = 0;
+
+
+        //     return function() {
+        //         var self = this;
+        //         var args = arguments;
+        //         var currTime = +new Date();
+        //         if (currTime - beforeTime >= time) {
+        //             fn.apply(self, args);
+        //             beforeTime = currTime;
+        //         }
+        //     }
+        // }
+
+        // //防抖
+        // window.onscroll = debounce(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        // // window.onscroll = function() {
+        //
+        // //     }
+        // //防抖
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         // var self = this; //备份了一个this
+        //         // var ages = arguments; //备份了一个参数数组
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+    </script>
+    <script>
+        // //节流
+        // window.onscroll = function() {
+        //     this
+        // }
+        // window.onscroll = throttle(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        //
+        // // console.log(Math.random());
+        // //节流
+        //
+        // function throttle(fn, time) {
+        //     var beforeTime = 0;
+        //
+        //
+        //     return function() {
+        //         var self = this;
+        //         var args = arguments;
+        //         var currTime = +new Date();
+        //         if (currTime - beforeTime >= time) {
+        //             fn.apply(self, args);
+        //             beforeTime = currTime;
+        //         }
+        //     }
+        // }
+        // //防抖
+        // window.onscroll = debounce(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        // // window.onscroll = function() {
+        //
+        // //     }
+        // //防抖
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         // var self = this; //备份了一个this
+        //         // var ages = arguments; //备份了一个参数数组
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+    </script>
+    <script>
+        // //节流
+        // window.onscroll = function() {
+        //     this
+        // }
+        // window.onscroll = throttle(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        //
+        // // console.log(Math.random());
+        // //节流
+        //
+        // function throttle(fn, time) {
+        //     var beforeTime = 0;
+        //
+        //
+        //     return function() {
+        //         var self = this;
+        //         var args = arguments;
+        //         var currTime = +new Date();
+        //         if (currTime - beforeTime >= time) {
+        //             fn.apply(self, args);
+        //             beforeTime = currTime;
+        //         }
+        //     }
+        // }
+        // //防抖
+        // window.onscroll = debounce(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        // // window.onscroll = function() {
+        //
+        // //     }
+        // //防抖
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         // var self = this; //备份了一个this
+        //         // var ages = arguments; //备份了一个参数数组
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+    <script>
+        // //节流
+        // window.onscroll = function() {
+        //     this
+        // }
+        // window.onscroll = throttle(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        //
+        // // console.log(Math.random());
+        // //节流
+        //
+        // function throttle(fn, time) {
+        //     var beforeTime = 0;
+        //
+        //
+        //     return function() {
+        //         var self = this;
+        //         var args = arguments;
+        //         var currTime = +new Date();
+        //         if (currTime - beforeTime >= time) {
+        //             fn.apply(self, args);
+        //             beforeTime = currTime;
+        //         }
+        //     }
+        // }
+        // //防抖
+        // window.onscroll = debounce(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        // // window.onscroll = function() {
+        //
+        // //     }
+        // //防抖
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         // var self = this; //备份了一个this
+        //         // var ages = arguments; //备份了一个参数数组
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+    </script>
+    <script>
+        // //节流
+        // window.onscroll = function() {
+        //     this
+        // }
+        // window.onscroll = throttle(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        //
+        //
+        //
+        // function throttle(fn, time) {
+        //     var beforeTime = 0;
+        //
+        //
+        //     return function() {
+        //         var self = this;
+        //         var args = arguments;
+        //         var currTime = +new Date();
+        //         if (currTime - beforeTime >= time) {
+        //             fn.apply(self, args);
+        //             beforeTime = currTime;
+        //         }
+        //     }
+        // }
+        // //防抖
+        // window.onscroll = debounce(function() {
+        //     console.log(1);
+        //
+        // }, 1000);
+        // // window.onscroll = function() {
+        //
+        // //     }
+        //
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         // var self = this; //备份了一个this
+        //         // var ages = arguments; //备份了一个参数数组
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll =throttle(function () {
+        //     console.log(5)
+        // },100);
+        // function throttle(fn ,time) {
+        //     var a = 0;
+        //     return function () {
+        //         var b = this;
+        //         var c = arguments;
+        //         var d = +new Date();
+        //         if(d - a>=time){
+        //                      fn.apply(b, c);
+        //                      a = d;
+        //                  }
+        //              }
+        //     }
+        //----------------------------------------------------
+        // window.onscroll =debounce(function () {
+        //     console.log(5)
+        // },100);
+        // function debounce(fn, time) {
+        //     var timer = null;
+        //
+        //     return function() {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(fn, time);
+        //     }
+        // }
+
+
+
+
+
+    </script>
+<script>
+    // window.onscroll=function () {
+    //     this
+    // }
+    // window.onscroll=throttle(function () {
+    //     console.log(1)
+    // },1000);
+    // function throttle(fn, time) {
+    //  var a= 0;
+    //  return function () {
+    //      var b = this;
+    //      var c =arguments;
+    //      var d =+new Date();
+    //      if (d -a >=time){
+    //          fn.apply(b, c);
+    //          a = d;
+    //      }
+    //
+    //  }
+    // }
+    //-----------------------------------
+    // window.onscroll=debounce(function () {
+    //     console.log(1)
+    // },100);
+    // function debounce(fn,time) {
+    //     var a = null;
+    //     return function() {
+    //         clearTimeout(a);
+    //         a = setTimeout(fn, time);
+    //     }
+    // }
+
+</script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll=throttle(function () {
+        //     console.log(1)
+        // },1000);
+        // function throttle(fn, time) {
+        //  var a= 0;
+        //  return function () {
+        //      var b = this;
+        //      var c =arguments;
+        //      var d =+new Date();
+        //      if (d -a >=time){
+        //          fn.apply(b, c);
+        //          a = d;
+        //      }
+        //
+        //  }
+        // }
+        //-----------------------------------
+        // window.onscroll=debounce(function () {
+        //     console.log(1)
+        // },100);
+        // function debounce(fn,time) {
+        //     var a = null;
+        //     return function() {
+        //         clearTimeout(a);
+        //         a = setTimeout(fn, time);
+        //     }
+        // }
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll=throttle(function () {
+        //     console.log(1)
+        // },1000);
+        // function throttle(fn, time) {
+        //  var a= 0;
+        //  return function () {
+        //      var b = this;
+        //      var c =arguments;
+        //      var d =+new Date();
+        //      if (d -a >=time){
+        //          fn.apply(b, c);
+        //          a = d;
+        //      }
+        //
+        //  }
+        // }
+        //-----------------------------------
+        // window.onscroll=debounce(function () {
+        //     console.log(1)
+        // },100);
+        // function debounce(fn,time) {
+        //     var a = null;
+        //     return function() {
+        //         clearTimeout(a);
+        //         a = setTimeout(fn, time);
+        //     }
+        // }
+
+    </script>
+    <script>
+        // window.onscroll=function () {
+        //     this
+        // }
+        // window.onscroll=throttle(function () {
+        //     console.log(1)
+        // },1000);
+        // function throttle(fn, time) {
+        //  var a= 0;
+        //  return function () {
+        //      var b = this;
+        //      var c =arguments;
+        //      var d =+new Date();
+        //      if (d -a >=time){
+        //          fn.apply(b, c);
+        //          a = d;
+        //      }
+        //
+        //  }
+        // }
+        //-----------------------------------
+        // window.onscroll=debounce(function () {
+        //     console.log(1)
+        // },100);
+        // function debounce(fn,time) {
+        //     var a = null;
+        //     return function() {
+        //         clearTimeout(a);
+        //         a = setTimeout(fn, time);
+        //     }
+        // }
+
+    </script>
+
+
+</body>
+
+</html>
