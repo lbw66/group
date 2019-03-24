@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+              margin:0;
+              padding:0;
+            }
+            #wrap{
+              width:100%;
+              height:500px;
+           
+              position:relative;
+            }
+            #wrap .banner{
+              width:100%;
+              height:100%;
+              position:absolute;
+              top:0;
+              left:0;
+              opacity:0;
+              transition:1s;
+            }
+          
+            #wrap .banner .banner-t{
+              width:1130px;
+              margin: 0 auto;
+              
+            }
+            #wrap .tab{
+              width:100%;
+              position:absolute;
+              bottom:10px;
+              text-align:center;
+            }
+            #wrap .tab span{
+              display:inline-block;
+              height:20px;
+              width:20px;
+              background: rgba(105,105,105,0.5);
+              border-radius:50%;
+            }
+            #wrap .tab span.on{
+              background:#fff;
+            }
+            </style>
+           </head>
+           <body>
+           <!-- banner 开始 -->
+            <div id="wrap">
+               <div class="banner first">
+                     <div class="banner-t">
+                       <img src="img/1.jpg" style=" width: 1130px;height: 500px;">
+                     </div> 
+               </div>
+               <div class="banner two">
+                     <div class="banner-t">
+                            <img src="img/2.jpg" style=" width: 1130px;height: 500px;">
+                     </div> 
+               </div>
+               <div class="banner three">
+                     <div class="banner-t">
+                            <img src="img/3.jpg" style=" width: 1130px;height: 500px;">
+                     </div> 
+               </div>
+               <div class="banner four">
+                         <div class="banner-t">
+                                <img src="img/4.jpg" style=" width: 1130px;height: 500px;">
+                         </div> 
+               </div>
+               <div class="banner five">
+                         <div class="banner-t">
+                                <img src="img/5.jpg" style=" width: 1130px;height: 500px;">
+                         </div> 
+               </div>
+               <div class="banner six">
+                     <div class="banner-t">
+                            <img src="img/6.jpg" style=" width: 1130px;height: 500px;">
+                     </div> 
+               </div>
+               <div class="tab">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+               </div>
+            </div>
+          <!-- banner 结束 -->
+          <script type="text/javascript">
+              var aBanner = document.getElementsByClassName("banner");
+              var banner_t = document.getElementsByClassName("banner-t");
+              var aSpan = document.getElementsByClassName("tab")[0].getElementsByTagName("span");
+          
+              aBanner[0].style.opacity = "1";
+              aSpan[0].className = "on";
+              //样式初始化
+              var num = 0;
+              var timer;
+              for(var i=0;i<aSpan.length;i++){
+                  aSpan[i].index = i;//自定义函数
+                  //清除
+                  aSpan[i].onclick= function(){
+                      for(var j=0;j<aSpan.length;j++){
+                         num= this.index;
+                         aSpan[j].className = "";
+                         aBanner[j].style.opacity = "0";
+                      }
+                      //清除
+                    aSpan[num].className = "on";
+                    aBanner[num].style.opacity = "1";
+                  }
+              }
+              timer = setInterval(function(){
+                  
+                   num ++;
+                   num %= aBanner.length;
+                   for(var j=0;j<aSpan.length;j++){
+                         aSpan[j].className = "";
+                         aBanner[j].style.opacity = "0";
+                      }
+                      
+                    aSpan[num].className = "on";
+                    aBanner[num].style.opacity = "1";
+                  
+              },3000);
+          </script>
+           </body>
+          </html>
