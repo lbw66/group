@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        main {
+            width: 1080px;
+            margin: 0 auto;
+        }
+        
+        .main-top {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .main-top-left {
+            position: relative;
+            width: 630px;
+            height: 355px;
+            overflow: hidden;
+        }
+        
+        .main-top-left>div {
+            position: absolute;
+            bottom: 50%;
+            width: 32px;
+            height: 46px;
+            background: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        
+        .main-top-left>div>img {
+            position: relative;
+            top: 13px;
+            left: 6px;
+            width: 20px;
+        }
+        
+        .main-top-left .lbt-l {
+            left: 0;
+        }
+        
+        .main-top-left .lbt-r {
+            right: 0;
+        }
+        
+        .main-top-left #mt-ul1 li {
+            opacity: 0;
+            transition: opacity .7s;
+        }
+        
+        .main-top-left #mt-ul1 img {
+            position: absolute;
+            top: 0;
+            width: 630px;
+            height: 355px;
+        }
+        
+        .main-top-left #mt-ul2 {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 10px 75px;
+            width: 100%;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .main-top-left #mt-ul2 li {
+            float: left;
+            opacity: .6;
+            margin-top: 3px;
+        }
+        
+        .main-top-left #mt-ul2 img {
+            width: 80px;
+            height: 50px;
+        }
+        
+        .main-top-left #mt-ul2 .mtOn {
+            margin-top: 0;
+            border: 3px solid red;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="main-top">
+            <div class="main-top-left" id="main-top-left">
+                <ul id="mt-ul1">
+                    <li style="opacity: 1"><img src="lbttp/news-a-1.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-2.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-3.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-4.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-5.jpg" alt=""></li>
+                </ul>
+                <ul id="mt-ul2">
+                    <li class="mtOn"><img src="lbttp/news-a-1.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-2.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-3.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-4.jpg" alt=""></li>
+                    <li><img src="lbttp/news-a-5.jpg" alt=""></li>
+                </ul>
+                <div class="lbt-l"><img src="lbttp/左.png" alt=""></div>
+                <div class="lbt-r"><img src="lbttp/右.png" alt=""></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // 轮播图
+        var mtUl1 = document.getElementById("mt-ul1");
+        var mtUl2 = document.getElementById("mt-ul2");
+        var mtLi1 = mtUl1.getElementsByTagName("li");
+        var mtLi2 = mtUl2.getElementsByTagName("li");
+        var lbtl = document.getElementsByClassName("lbt-l")[0];
+        var lbtr = document.getElementsByClassName("lbt-r")[0];
+        var now = 0;
+
+        function go() {
+            for (var i = 0; i < mtLi2.length; i++) {
+                mtLi2[i].className = "";
+                mtLi1[i].style.opacity = "0";
+            }
+            mtLi2[now].className = "mtOn";
+            mtLi1[now].style.opacity = "1";
+        }
+
+        function next() {
+            now++;
+            if (now == mtLi2.length) {
+                now = 0;
+            }
+            go();
+        }
+
+        function back() {
+            now--;
+            if (now == -1) {
+                now = mtLi2.length - 1;
+            }
+            go();
+        }
+        var times = null;
+        times = setInterval(next, 1500)
+
+        mtUl1.onmouseover = function() {
+            clearInterval(times);
+        };
+        mtUl1.onmouseout = function() {
+            times = setInterval(next, 1500)
+        };
+        mtUl2.onmouseover = function() {
+            clearInterval(times);
+        };
+        mtUl2.onmouseout = function() {
+            times = setInterval(next, 1500)
+        };
+        for (var z = 0; z < mtLi2.length; z++) {
+            mtLi2[z].index = z;
+            mtLi2[z].onmouseover = function() {
+                now = this.index;
+                go();
+            };
+        }
+        lbtl.onclick = function() {
+            clearInterval(times);
+            back();
+            times = setInterval(next, 1500);
+        }
+        lbtr.onclick = function() {
+            clearInterval(times);
+            next();
+            times = setInterval(next, 1500);
+        }
+    </script>
+</body>
+
+</html>

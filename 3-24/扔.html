@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        #container {
+            margin: 20px;
+            width: 600px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #list {
+            /*七张图片*/
+            width: 4200px;
+            height: 400px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        #list img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+
+        #buttons {
+            position: absolute;
+            left: 252px;
+            border-radius: 10px;
+            height: 15px;
+            width: 85px;
+            z-index: 2;
+            bottom: 20px;
+            right: 100px;
+            background-color: rgba(255,255,255,.3);
+        }
+
+        #buttons span {
+            cursor: pointer;
+            float: left;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            height: 10px;
+            width: 10px;
+            margin-right: 5px;
+            background: #333;
+        }
+
+        #buttons .on {
+            background: orangered;
+        }
+
+        .arrow {
+            display: none;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            z-index: 2;
+            top: 180px;
+            color: #fff;
+            background-color: RGBA(0, 0, 0, .3);
+        }
+
+        .arrow:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+
+        #container:hover .arrow {
+            display: block;
+        }
+
+        #pre {
+            left: 20px;
+        }
+
+        #next {
+            right: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="container">
+    <div id="list" style="left:-600px">
+        <img src="lbttp/taobao5.jpg" alt="">
+        <img src="lbttp/taobao1.jpg" alt="">
+        <img src="lbttp/taobao2.jpg" alt="">
+        <img src="lbttp/taobao3.jpg" alt="">
+        <img src="lbttp/taobao4.jpg" alt="">
+        <img src="lbttp/taobao5.jpg" alt="">
+        <img src="lbttp/taobao1.jpg" alt="">
+</div>
+    <div id="buttons">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+        <span index="4"></span>
+        <span index="5"></span>
+    </div>
+    <a href="javascript:;" class="arrow" id="prev">&lt;</a>
+    <a href="javascript:;" class="arrow" id="next">&gt;</a>
+</div>
+</div>
+<script>
+    window.onload =function () {
+        //获取值。。。
+        var container =document.getElementById("container");
+        var list =document.getElementById("list");
+        var buttons =document.getElementById("buttons")
+        var buttons= buttons.getElementsByTagName("span");
+        var prev =document.getElementById("prev");
+        var next =document.getElementById("next");
+        //小圆点
+        index =1;
+        var animated =false;
+        var timer;
+
+
+
+
+
+        //搞一个函数 下面调用
+        function animate(offset){
+            var newleft = parseInt(list.style.left) +offset;//一个图片600px，  +off  这个参数
+            var time =300;//位移总时间
+            var interval =10;//位移间隔
+            var speed =offset/(time/interval);//每次位移
+            
+            function go(){
+                animated =  true;
+                if ((speed < 0 && parseInt(list.style.left)>newleft)|| (speed > 0 && parseInt(list.style.left) <newleft)) {
+                    list.style.left = parseInt(list.style.left)  +speed + 'px';
+                    setTimeout(go,interval);
+                }
+                else {
+                    animated =  false;
+                    list.style.left = newleft + 'px';//让下面的数值加px
+                    if (newleft > -600){ //小于-600 就回去-3000 顺序5123451
+                        list.style.left = -3000 + 'px';
+                    }
+                    if(newleft < -3000){//小于-3000 就回去-600
+                        list.style.left = -600 + 'px';
+                    }
+                }
+            }
+            go();
+        }
+
+        function play() {
+            timer = setInterval(function () {
+                next.onclick();
+            },3000)
+        }
+        function stop() {
+            clearInterval(timer);
+        }
+
+
+
+        //在搞一个函数   --小圆点
+        function  showbutton(){
+            //var 一个i 遍历 当buttons的on激活事件 吧class清空
+            for(var i =0;i<buttons.length; i++){
+                if( buttons[i].className== 'on'){
+                    buttons[i].className= '';
+                    break;
+                }
+            }
+            buttons[index -1].className = 'on';//让index-1
+        }
+
+
+
+        
+         //按钮调用
+        next.onclick =function () {
+            if(index == 5){ //函数showbutton进来判断>5 进让下标回去1
+                index = 1;
+            }else {
+                index += 1;
+            }
+            showbutton();
+            // animate(-600);
+            if(!animated ){
+                animate(-600);
+            }
+
+         };
+        //按钮调用
+        prev.onclick =function () {
+            if (index == 1) {//同上
+                index = 5;
+            } else {
+                index -= 1;
+            }
+            showbutton();
+            // animate(600);
+            if(!animated ){
+                animate(600);
+            }
+        };
+        //小圆点移动事件 遍历小圆点
+        for(var i =0;i<buttons.length;i++){
+            buttons[i].onmouseover = function () {
+                if(this.className =='on'){//如果第二次移动到小圆点上面会出现二次执行 return
+                    return;
+                }
+
+                var maxindex= parseInt(this.getAttribute('index'));//接受参数
+                var offset =-600*(maxindex - index);//用-600
+                animate(offset);//调用上面的判断
+                index = maxindex;//回去
+                showbutton();
+            }
+                
+            
+
+        }
+
+
+        container.onmouseover =stop;
+        container.onmouseout = play;
+
+        play();
+    }
+</script>
+</body>
+</html>

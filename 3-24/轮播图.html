@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/myFunc.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        #slider {
+            width: 750px;
+            height: 320px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #top {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #top ul {
+            width: 4500px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #top ul li {
+            width: 750px;
+            height: 320px;
+            float: left;
+        }
+        #top ul li img {
+            width: 750px;
+            height: 320px;
+            float: left;
+        }
+
+        #slider ol {
+            border-radius: 10px;
+            position: absolute;
+            right: 309px;
+            bottom: 10px;
+            text-align: center;
+            font-size: 0;
+            left: 50%;
+            margin-left: -39px;
+            background-color: rgba(255,255,255,.3);
+        }
+
+        #slider ol li {
+          width: 15px;
+            height: 15px;
+            background-color: darkgray;
+            display: inline-block;
+            margin-right: 3px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #slider ol li.current {
+            background-color: orangered;
+        }
+        .btn .left,.btn .right{
+            width: 30px;
+            height: 50px;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            background-color: rgba(160,125,125,.7);
+            text-align: center;
+            font: 400 18px/50px "microsoft yahei";
+            color: #fff;
+            cursor: pointer;
+
+        }
+        .btn {
+            /*display:none;*/
+        }
+        .btn .left {
+            left: 5px;
+        }
+        .btn .right {
+            right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="slider">
+    <div id="top">
+        <ul id="ul">
+            <li><img src="lbttp/taobao1.jpg" alt=""></li>
+            <li><img src="lbttp/taobao2.jpg" alt=""></li>
+            <li><img src="lbttp/taobao3.jpg" alt=""></li>
+            <li><img src="lbttp/taobao4.jpg" alt=""></li>
+            <li><img src="lbttp/taobao5.jpg" alt=""></li>
+        </ul>
+    </div>
+    <ol id="ol">
+    </ol>
+    <div class="btn" id="btn">
+        <span class="left"> <</span>
+        <span class="right"> ></span>
+    </div>
+    
+</div>
+<script src="js/myFunc.js"></script>
+<script>
+  window.onload =function () {
+      //获得标签
+      var uls = document.getElementById("ul");
+      var lis = uls.children;
+      var ol = document.getElementById("ol")
+      // 2. li标签
+      uls.appendChild(lis[0].cloneNode(true));
+      var currentIndex = 0;
+      var indicatorIndex = 0;
+      // 3. for遍历lis 添加一个li
+      for (var i = 0; i < lis.length - 1; i++) {
+          var li = document.createElement("li");
+          ol.appendChild(li);
+      }
+
+      // 4. 选择切换样式
+      ol.children[0].className = "current";
+
+      // 5.鼠标进入园点  切换图片
+      var olLis = ol.children;
+      for (var j = 0; j < olLis.length; j++) {
+          (function (j) {
+              // 5.1 获取单独的li标签
+              var li = olLis[j];
+              // 5.2 鼠标进入
+              li.onmouseover = function () {
+                  for (var i = 0; i < olLis.length; i++) {
+                      olLis[i].className = "";
+                  }
+                  this.className = "current";
+                  // 5.3 动起来
+                  constant(uls, -(750 * j), 100);
+                  currentIndex = indicatorIndex = j;
+              };
+          })(j);
+      }
+
+      //6鼠标点击 切换图片
+  }
+</script>
+</body>
+</html>
