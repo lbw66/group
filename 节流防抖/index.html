@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 300px;
+        height: 5000px;
+        background: skyblue;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+             window.onscroll=throttle(function(){
+                 console.log(1);
+             },1000)
+                 //节流
+                //  function throttle(fn,time){
+                //      var beforeTime =0;
+                //      return function(){//暴露出去的函数
+                //          var self =this;
+                //          var args=arguments;
+                //          var currTime =+new Date();
+                //          if(currTime - beforeTime >=time){
+                //           //执行一次
+                //           fn.apply(self,args);
+                //           beforeTime =currTime;
+                //          }
+                //      }
+                //  }
+            
+                 //去抖
+                //  function debounce(fn,time){
+                //    var timer =null;
+                //    return function(){
+                //        var self=this;
+                //        var args=arguments;
+                //        clearTimeout(timer);//上一次下发还没执行的任务
+                //        timer =setTimeout(fn,time);
+                //    }
+                //  }
+            
+            
+                 //节流
+                //  function throttle(fn,time){
+                //      var beforeTime=0;
+                //     return function(){
+                //         var self=this;
+                //         var args=arguments;
+                //         var currTime =+new Date();
+                //         if(currTime -beforeTime>=time){
+                //             fn.apply(self,args);
+                //             beforeTime =currTime;
+                //         }
+                //     }
+            
+                //  }
+                //防抖
+                // window.onscroll= debounce(function(){
+                //     console.log(1);
+                // },1000);
+                    
+                // function debounce(fn,time){
+                //     var timer=null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer =setTimeout(fn,time);
+                //     }
+                // }
+            
+            
+                
+                //节流
+                // function throttle(fn,time){
+                //     var beforeTime=0;
+                //     return function(){
+                //          var self=this;
+                //          var args=arguments;
+                //          var currTime =+new Date();
+                //          if(currTime-beforeTime>=time){
+                //             fn.apply(self,args);
+                //             beforeTime=currTime;
+                //          }
+                //     }
+                // }
+            
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer =null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //     var beforeTime=0;
+                //     return function(){
+                //         var self=this;
+                //     var args=arguments;
+                  
+                //   var currTime =+new Date();
+                //   if(currTime-beforeTime>=time){
+                //      fn.apply(self,args);
+                //      beforeTime=currTime;
+                //   }
+                // }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer =null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //     var beforeTime=0;
+                //     return function(){
+                //         var self =this;
+                //         var args=arguments;
+                //         var currTime=+new Date();
+                //         if(currTime-beforeTime>=time){
+                //             fn.apply(self,args);
+                //             beforeTime=currTime;
+                //         }
+                //     }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer =null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle (fn,time){
+                // var beforeTime=0;
+                // return function(){
+                //     var self=this;
+                //     var args =arguments;
+                //    var currTime=+new Date();
+                //    if(currTime-beforeTime>=time){
+                //        fn.apply(self,args);
+                //        beforeTime=currTime;
+                //    }
+                // }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                // var timer=null;
+                // return function(){
+                //     clearTimeout(timer);
+                //     timer=setTimeout(fn,time);
+                // }
+                // }
+                
+                //节流
+                // function throttle(fn,time){
+                //      var beforeTime=0;
+                //      return function(){
+                //          var self=this;
+                //          var args=arguments;
+                //          var currTime=+new Date();
+                //          if(currTime-beforeTime>=time){
+                //          fn.apply(self,args);
+                //          beforeTime=currTime;
+                //          }
+                //      }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //   var timer=null;
+                //   return function(){
+                //       clearTimeout(timer);
+                //       timer=setTimeout(fn,time);
+                //   }
+            
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //  var  beforeTime=0;
+                //  return function(){
+                //      var self =this;
+                //      var args=arguments;
+                //      var currTime=+new Date();
+                //      if(currTime-beforeTime>=time){
+                //       fn.apply(self,args);
+                //       beforeTime=currTime;
+                //      }
+                //  }
+                // }
+                
+                //去抖
+                // function debounce(fn,time){
+                //     var timer=null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //       var beforeTime=0;
+                //       return function(){
+                //           var self=this;
+                //           var args=arguments;
+                //           var currTime=+new Date();
+                //           if(currTime-beforeTime>=0){
+                //           fn.apply(self,args);
+                //           beforeTime=currTime;
+                //           }
+                //       }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer=0;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                 //节流
+                //  function throttle(fn,time){
+                //       var beforeTime=0;
+                //       return function(){
+                //           var self=this;
+                //           var args=arguments;
+                //           var currTime=+new Date();
+                //           if(currTime-beforeTime>=0){
+                //           fn.apply(self,args);
+                //           beforeTime=currTime;
+                //           }
+                //       }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer=0;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+
+                 //  window.onscroll=throttle(function(){
+            //      console.log(1);
+            //  },1000)
+                 //节流
+                //  function throttle(fn,time){
+                //      var beforeTime =0;
+                //      return function(){//暴露出去的函数
+                //          var self =this;
+                //          var args=arguments;
+                //          var currTime =+new Date();
+                //          if(currTime - beforeTime >=time){
+                //           //执行一次
+                //           fn.apply(self,args);
+                //           beforeTime =currTime;
+                //          }
+                //      }
+                //  }
+            
+                 //去抖
+                //  function debounce(fn,time){
+                //    var timer =null;
+                //    return function(){
+                //        var self=this;
+                //        var args=arguments;
+                //        clearTimeout(timer);//上一次下发还没执行的任务
+                //        timer =setTimeout(fn,time);
+                //    }
+                //  }
+            
+            
+                 //节流
+                //  function throttle(fn,time){
+                //      var beforeTime=0;
+                //     return function(){
+                //         var self=this;
+                //         var args=arguments;
+                //         var currTime =+new Date();
+                //         if(currTime -beforeTime>=time){
+                //             fn.apply(self,args);
+                //             beforeTime =currTime;
+                //         }
+                //     }
+            
+                //  }
+                //防抖
+                window.onscroll= debounce(function(){
+                    console.log(1);
+                },1000);
+                    
+                // function debounce(fn,time){
+                //     var timer=null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer =setTimeout(fn,time);
+                //     }
+                // }
+            
+            
+                
+                //节流
+                // function throttle(fn,time){
+                //     var beforeTime=0;
+                //     return function(){
+                //          var self=this;
+                //          var args=arguments;
+                //          var currTime =+new Date();
+                //          if(currTime-beforeTime>=time){
+                //             fn.apply(self,args);
+                //             beforeTime=currTime;
+                //          }
+                //     }
+                // }
+            
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer =null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //     var beforeTime=0;
+                //     return function(){
+                //         var self=this;
+                //     var args=arguments;
+                  
+                //   var currTime =+new Date();
+                //   if(currTime-beforeTime>=time){
+                //      fn.apply(self,args);
+                //      beforeTime=currTime;
+                //   }
+                // }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer =null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //     var beforeTime=0;
+                //     return function(){
+                //         var self =this;
+                //         var args=arguments;
+                //         var currTime=+new Date();
+                //         if(currTime-beforeTime>=time){
+                //             fn.apply(self,args);
+                //             beforeTime=currTime;
+                //         }
+                //     }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer =null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle (fn,time){
+                // var beforeTime=0;
+                // return function(){
+                //     var self=this;
+                //     var args =arguments;
+                //    var currTime=+new Date();
+                //    if(currTime-beforeTime>=time){
+                //        fn.apply(self,args);
+                //        beforeTime=currTime;
+                //    }
+                // }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                // var timer=null;
+                // return function(){
+                //     clearTimeout(timer);
+                //     timer=setTimeout(fn,time);
+                // }
+                // }
+                
+                //节流
+                // function throttle(fn,time){
+                //      var beforeTime=0;
+                //      return function(){
+                //          var self=this;
+                //          var args=arguments;
+                //          var currTime=+new Date();
+                //          if(currTime-beforeTime>=time){
+                //          fn.apply(self,args);
+                //          beforeTime=currTime;
+                //          }
+                //      }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //   var timer=null;
+                //   return function(){
+                //       clearTimeout(timer);
+                //       timer=setTimeout(fn,time);
+                //   }
+            
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //  var  beforeTime=0;
+                //  return function(){
+                //      var self =this;
+                //      var args=arguments;
+                //      var currTime=+new Date();
+                //      if(currTime-beforeTime>=time){
+                //       fn.apply(self,args);
+                //       beforeTime=currTime;
+                //      }
+                //  }
+                // }
+                
+                //去抖
+                // function debounce(fn,time){
+                //     var timer=null;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                //节流
+                // function throttle(fn,time){
+                //       var beforeTime=0;
+                //       return function(){
+                //           var self=this;
+                //           var args=arguments;
+                //           var currTime=+new Date();
+                //           if(currTime-beforeTime>=0){
+                //           fn.apply(self,args);
+                //           beforeTime=currTime;
+                //           }
+                //       }
+                // }
+            
+                //去抖
+                // function debounce(fn,time){
+                //     var timer=0;
+                //     return function(){
+                //         clearTimeout(timer);
+                //         timer=setTimeout(fn,time);
+                //     }
+                // }
+            
+                 //节流
+                 function throttle(fn,time){
+                      var beforeTime=0;
+                      return function(){
+                          var self=this;
+                          var args=arguments;
+                          var currTime=+new Date();
+                          if(currTime-beforeTime>=0){
+                          fn.apply(self,args);
+                          beforeTime=currTime;
+                          }
+                      }
+                }
+            
+                //去抖
+                function debounce(fn,time){
+                    var timer=0;
+                    return function(){
+                        clearTimeout(timer);
+                        timer=setTimeout(fn,time);
+                    }
+                }
+    </script>
+</body>
+</html>
