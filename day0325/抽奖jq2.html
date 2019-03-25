@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        #box{
+            width: 500px;
+            height:500px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        #box li{
+            width:32.5%;
+            height:32.5%;
+            border:1px solid #ccc;
+        }
+        .on{
+            background:#ccc;
+        }
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li>一等奖</li>
+        <li>二等奖</li>
+        <li>三等奖</li>
+        <li>四等奖</li>
+        <li>五等奖</li>
+        <li>六等奖</li>
+        <li>七等奖</li>
+        <li>八等奖</li>
+        <li>九等奖</li>
+    </ul>
+    <a href="javascript:;">抽奖</a>
+    <span></span>
+    <script src = "../../JS/jquery-3.3.1.js"></script>
+    <script>
+        var bingo = null;
+        var a=10;
+        
+
+        $("a").click(
+            function (){
+            clearInterval(bingo);
+            bingo = setInterval(function(){
+                a--;
+                $("li").removeAttr("class");
+                var aa = Math.floor(Math.random()*9)
+                console.log(aa);
+                $("li:eq("+aa+")").attr("class","on");
+                $("span").attr("value",function(){
+                   var qwe= $("li:eq("+aa+")").attr("value");
+                   console.log(qwe);
+                   return qwe;
+                })
+                if(a===0){
+                    clearInterval(bingo);
+                    a=10;
+                }
+            },100);
+        }
+        );
+        
+    </script>
+</body>
+</html>

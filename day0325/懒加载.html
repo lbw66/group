@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       *{
+           margin:0;padding:0;
+       }
+       ul{
+           list-style: none;
+       }
+       li{
+           width:500px;
+           margin:0 auto;
+       }
+       li img{
+           display:block;
+           height:300px;
+           width: 200px;
+           margin: 20px auto ;
+           border:1px solid red;
+       }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+        <li><img src="" data-src = "xiaomi/imgs/-1.jpg"></li>
+    </ul>
+    <script src="../JS/jquery-3.3.1.js"></script>
+    <script>
+        
+        var imgs = document.getElementsByTagName("img");
+        window.addEventListener("scroll",debounce(see,300));
+        function see(){
+
+           /*  //获取浏览器滚动条滚过的高度
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            console.log("scrollTop:",scrollTop);
+            //获取浏览器可视区域高度
+            var winTop = window.innerHeight;
+            console.log("window.innnerHeight:",winTop)
+            for(var i = 0;i<imgs.length;i++){
+                if(imgs[i].offsetTop < winTop+scrollTop){
+                    imgs[i].src = imgs[i].getAttribute("data-src");
+                    console.log("imgs",i,":",imgs[i],":",imgs[i].offsetTop)
+                }
+            }  */  
+
+            //getBoundingClientRect()这个方法返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离。
+            for(var i = 0;i<imgs.length;i++){
+                if(imgs[i].getBoundingClientRect().top < window.innerHeight){
+                    imgs[i].src = imgs[i].getAttribute("data-src");
+                }
+            }
+        }
+        function debounce(func,time){
+            var timer = null;
+            return function(){
+                clearTimeout(timer);
+                var context = this;
+                var args = arguments;
+                timer = setTimeout(function(){
+                    func.apply(context,args);
+
+                },time)
+            }
+        }
+    </script>
+</body>
+</html>
