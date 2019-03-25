@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片懒加载</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+
+    }
+   li{
+       list-style: none;
+       height: 700px;
+       border: 1px solid;
+       box-sizing: border-box;
+   }
+   img{
+       display: block;
+       margin:250px auto;
+       height: 200px;
+       width: 200px;
+   }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+     <ul>
+         <li><img data-src="img/1.jpg" alt=""></li>
+         <li><img data-src="img/2.jpg" alt=""></li>
+         <li><img data-src="img/3.jpg" alt=""></li>
+         <li><img data-src="img/4.jpg" alt=""></li>
+         <li><img data-src="img/5.jpg" alt=""></li>
+         <li><img data-src="img/6.jpg" alt=""></li>
+         <li><img data-src="img/7.jpg" alt=""></li>
+     </ul>
+    </div>
+<script>
+
+function imgonload(){
+    let imgs=document.querySelectorAll("img");
+    
+    for(let i=0;i<imgs.length;i++){
+      if(imgs[i].getBoundingClientRect().top <window.innerHeight){//getBoundingClientRect()该方法用于获取某个元素相对于视窗的位置集合。集合中有top, right, bottom, left等属性。
+           imgs[i].src=imgs[i].dataset.src;
+      }
+    }
+}
+function debounce(fn,time){
+  var timer=null;
+ return function(){
+    var self=this;
+    var args=arguments;
+    clearInterval(time);
+    timer=setTimeout(function(){
+        fn.apply(self);
+    },3000);
+ }
+}
+
+</script>
+<script>
+window .onload=imgonload;
+window.onscroll=debounce(imgonload);
+</script>
+</body>
+</html>
