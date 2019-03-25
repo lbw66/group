@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #uiqw {
+            width: 750px;
+            height: 500px;
+        }
+        
+        #uiqw li {
+            float: left;
+            width: 200px;
+            height: 80px;
+            border: 1px solid #333333;
+            list-style: none;
+            margin-left: 10px;
+            margin-top: 40px;
+            text-align: center;
+            line-height: 80px;
+        }
+        
+        input {
+            width: 100px;
+            height: 60px;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/2.0.2/jquery.js"></script>
+</head>
+
+<body>
+    <input type="button" value="开始" id="star">
+    <ul id="uiqw">
+        <li class="cj">一等奖</li>
+        <li class="cj">二等奖</li>
+        <li class="cj">三等奖</li>
+        <li class="cj">四等奖</li>
+        <li class="cj">五等奖</li>
+        <li class="cj">六等奖</li>
+    </ul>
+
+    <script>
+        let s = 5;
+        let time = setInterval(function() {
+            if (s < 0) {
+                clearInterval(time)
+                $("#star").css({
+                    background: "grey",
+                    "font-size": "24px"
+                })
+            }
+        }, 1000)
+        $('#star').on('click', function() {
+            let i = 0;
+            let t = 0;
+            let num = parseInt(Math.random() * 8 + 1)
+            console.log(num)
+            change = setInterval(function() {
+                i++;
+                if (i > 8) {
+                    i = 1;
+                    t++;
+                }
+                $('cj').removeClass('back');
+                if (t == 4) {
+                    if (i == num) {
+                        clearInterval(change)
+                    }
+                }
+            }, 200)
+
+        })
+    </script>
+
+</body>
+
+</html>

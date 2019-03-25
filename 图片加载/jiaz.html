@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+            height: 800px;
+            box-sizing: border-box;
+            border: 1px solid skyblue;
+        }
+        
+        img {
+            display: block;
+            margin: 100px auto;
+            width: 1024px;
+            height: 640px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><img data-src="img/1.jpg"></li>
+        <li><img data-src="img/2.jpg"></li>
+        <li><img data-src="img/3.jpg"></li>
+        <li><img data-src="img/4.jpg"></li>
+        <li><img data-src="img/5.jpg"></li>
+        <li><img data-src="img/6.jpg"></li>
+        <li><img data-src="img/7.jpg"></li>
+        <li><img data-src="img/8.jpg"></li>
+        <li><img data-src="img/9.jpg"></li>
+        <li><img data-src="img/10.jpg"></li>
+    </ul>
+    <script src="jiaz.js"></script>
+    <script>
+        window.onload = imgonload
+        window.onscroll = scoImg(imgonload)
+    </script>
+</body>
+
+</html>
