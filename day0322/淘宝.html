@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px; padding:0px;
+        }
+        ul{
+            list-style: none;
+        }
+        #box{
+            position: relative;
+            width: 520px ;
+            height:280px;
+            margin:50px auto 0;
+        }
+        #ul1{
+            position: relative;
+            overflow: hidden;
+            width: 3120px;
+            height:280px;
+            transition: .5s margin-left;
+        }
+        #ul1 li{
+            float: left;
+            width: 520px ;
+            height:280px;
+        }
+        img{
+            width:520px;
+            height:280px;
+        }
+        h1 , h2{
+            position: absolute;
+            top:50%;
+            margin-top:-25px;
+            height:50px;
+            width: 30px;
+            background: orange;
+            font-size: 34px;
+        }
+        h2{
+            right:0px;
+        }
+        #ul2{
+            position:absolute;
+            bottom:10px;
+            left:50%;
+            width:200px;
+            margin-left:-100px;
+            height: 20px;
+            display:flex;
+            justify-content: space-around;
+        }
+        #ul2 li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background:#ccc;
+        }
+        .no{
+            transition:none;
+        }
+        #ul2 .on{
+            background:orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul1">
+            <li><img src="img/tb-1.jpg" alt=""></li>
+            <li><img src="img/tb-2.jpg" alt=""></li>
+            <li><img src="img/tb-3.jpg" alt=""></li>
+            <li><img src="img/tb-4.jpg" alt=""></li>
+            <li><img src="img/tb-5.jpg" alt=""></li>
+            <li class="no"><img src="img/tb-1.jpg" alt=""></li>
+        </ul>
+        <ul id="ul2">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <h1><</h1>
+        <h2>></h2>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var ul1 = document.getElementById("ul1");
+        var ul2 = document.getElementById("ul2");
+        var li1 = ul1.getElementsByTagName("li");
+        var li2 = ul2.getElementsByTagName("li");
+        var index = 0;
+        var timer = null;
+        for(var li2s = 0;li2s<li2.length;li2s++){
+            li2[li2s].index = li2s;
+            li2[li2s].addEventListener("click",function(){
+                onLi2(this.index)
+            });
+        }
+        play();
+        // 图片轮播
+        function play(){
+            timer = setInterval(function(){
+                // if(index == 0){
+                //     // console.log(1)
+                //     ul1.style.transition = "0.001s all";
+                //     ul1.style.marginLeft = 0 + "px";
+                //     console.log(ul1.style.marginLeft)
+                // }
+                    // ul1.style.transition = ".5s all";
+                index ++;
+               console.log("now"+index)
+               ul1.style.marginLeft = -520*index + "px";
+               if(index == 5){
+                   console.log(1)
+                   index = 0;
+                   clearInterval(timer);
+               }
+            //     if(index==5){
+            //     //     console.log(li1[index])
+            //        index = 0;
+            //         ul1.style.marginLeft = -520*index + "px";
+            //         ul1.style.transition = "none";
+            //    }else{
+            //     ul1.style.transition = "0.5s all";
+            //    }
+            },1000);
+        }
+        var timer = null;
+        // obj:执行动画的对象 sp:动画移动速度 target:执行动画的目标位置 正：
+        function move(obj,sp,target){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                // 获取当前位置
+                var oldValue = obj.offsetLeft;
+                if(oldValue>target){
+                    oldValue -=10;
+                    obj.style.left = oldValue + "px";
+                }else if(oldValue<target){
+                    oldValue +=10;
+                    obj.style.left = oldValue + "px";
+                }else{
+                    clearInterval(obj.timer);
+                    obj.style.left = target +"px";
+                }
+            },sp)
+        }
+        // 小标导航点击
+        function onLi2(idx){
+            for(var bot =0;bot<li2.length;bot++){
+                li2[bot].classList.remove("on");
+            }
+            li2[idx].classList.add("on");
+            ul1.style.marginLeft = -520*idx + "px";
+            index = idx;
+            
+        }
+    </script>
+</body>
+</html>

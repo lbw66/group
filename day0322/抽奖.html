@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #ul1 {
+            width: 600px;
+            height: 600px;
+            margin: 50px auto 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #ul1 li {
+            width: 33%;
+            height: 33%;
+            line-height: 200px;
+            border: 1px solid burlywood;
+            text-align: center;
+            justify-content: space-around
+        }
+
+        .on {
+            background: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>一等奖</li>
+        <li>二等奖</li>
+        <li>三等奖</li>
+        <li>四等奖</li>
+        <li>五等奖</li>
+        <li>六等奖</li>
+        <li>七等奖</li>
+        <li>八等奖</li>
+        <li>九等奖</li>
+    </ul>
+    <button id="btn">抽奖</button>
+    <span id="sp"></span>
+    <script>
+        window.onload = function () {
+            var ul1 = document.getElementById("ul1");
+            var lis = ul1.getElementsByTagName("li");
+            var btn = document.getElementById("btn");
+            var sp = document.getElementById("sp");
+            var bingo = null;
+            //节流函数
+            var throttle = function (func,time) {
+                var times = Date.now();
+                return function(){
+                    var context = this;
+                    var args = arguments;
+                    var now = Date.now();
+                    if(now - times >= time){
+                        func.apply(context,args);
+                        times = Date.now();
+                    }
+                }
+            };
+            btn.addEventListener("click",throttle(bg,2500) , false);
+            
+            function bg() {
+                var a = 20;
+                clearInterval(bingo);
+                bingo = setInterval(function () {
+                    a--;
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].className = "";
+                    }
+                    lis[Math.floor(Math.random() * 9)].className = "on";
+                    if (a === 0) {
+                        clearInterval(bingo);
+                        var jiang = document.getElementsByClassName("on")[0];
+                    sp.innerHTML = "llq 恭喜你中" + jiang.innerHTML;
+                    }
+                }, 100);
+               
+            }
+        }
+    </script>
+</body>
+
+</html>

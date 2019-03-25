@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../JS/jquery-3.3.1.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #ul1 {
+            width: 600px;
+            height: 600px;
+            margin: 50px auto 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #ul1 li {
+            width: 33%;
+            height: 33%;
+            line-height: 200px;
+            border: 1px solid burlywood;
+            text-align: center;
+        }
+
+        .on {
+            background: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li>一等奖</li>
+    <li>二等奖</li>
+    <li>三等奖</li>
+    <li>四等奖</li>
+    <li>五等奖</li>
+    <li>六等奖</li>
+    <li>七等奖</li>
+    <li>八等奖</li>
+    <li>九等奖</li>
+</ul>
+<button id="btn">抽奖</button>
+<script>
+    $(document).ready(function(){
+        var bingo = null;
+        // 节流函数
+        var throttle = function (func,time) {
+                var times = Date.now();
+                return function(){
+                    var context = this;
+                    var args = arguments;
+                    var now = Date.now();
+                    if(now - times >= time){
+                        func.apply(context,args);
+                        times = Date.now();
+                    }
+                }
+            };
+        $("#btn").click(bg());
+
+        function bg(){
+            var a = 20;
+            $("body").stopTime(bingo);
+            
+            var bingo = setInterval(function(){
+                a--;
+                for(var i = 0;i<lis.length;i++){
+                    lis[i].className = "";
+                }
+                if(a===0){
+                    clearInterval(bingo);
+                    $("#sp")[0].innerHTLM = "llq 恭喜你中" + $(".on")[0].innerHTML;
+                }
+            },100)
+            bingo = $("body").everyTime("0.1s",function(){
+                a--;
+                for (var i = 0; i < lis.length; i++) {
+                        lis[i].className = "";
+                    }
+                if(a === 0){
+                    $("body").stopTime(bingo);
+                    $("#sp")[0].innerHTLM = "llq 恭喜你中" + $(".on")[0].innerHTML;
+                }
+            }
+            )
+        }
+    })
+</script>
+</body>
+</html>

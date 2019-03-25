@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>无缝滚动的原理</title>
+    <style type="text/css">
+      #box {
+        width: 900px;
+        margin: 100px auto;
+        height: 150px;
+        overflow: hidden;
+        background-color: #ddd;
+        position: relative;
+      }
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+        margin: 0px;
+        float: left;
+      }
+      ul {
+        position: absolute;
+        left: 0;
+        top: 0px;
+      }
+      li {
+      }
+      li img {
+        width: 150px;
+        height: 150px;
+        display: block;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function() {
+        var box = document.getElementById("box");
+        var ul = box.getElementsByTagName("ul")[0];
+        var lis = box.getElementsByTagName("li");
+        //  console.log(lis.length);
+        //第五步，设置一个默认的时间关闭
+        var closeTimer = null;
+        ul.innerHTML = ul.innerHTML + ul.innerHTML;
+        ul.style.width = lis[0].offsetWidth * lis.length + "px";
+
+        function imgshow() {
+          //第四步，实际上我们总有运行完的时候。还是没有办法实现无缝滚动，这个时候我们可以考虑在整个UL运行到一半的时候，瞬间把offsetLeft重置LEFT 0
+          //因为这个时候整个UL是在向左滚动的，所以，整个UL的left应该是负数的，所以我们可以判断，让这个小于宽度的一半时。重置为0
+          //console.log(ul.offsetLeft+"<"+-ul.offsetWidth/2);
+          //请打开控制台，观察数字的变化，当
+          //ul.offsetLeft数字跑到1001的时候
+          //我们把LEFT重置了
+          //如果你要运行到实际的案例中。请关闭console.log(ul.offsetLeft+"<"+-ul.offsetWidth/2);
+          //这里仅为判断开启
+          //if (ul.offsetLeft<-ul.offsetWidth/2) {
+          //   ul.style.left='0';
+          //};
+
+          //上面是向左
+          //如果是向右呢？
+          //反着来就可以了,也就是当ul宽度大于0的时候，重置LEFT 向左挪动一半
+          //  console.log("0>"+-ul.offsetWidth/2);
+          if (ul.offsetLeft > 0) {
+            ul.style.left = -ul.offsetWidth / 2 + "px";
+          }
+
+          //让整个UL的left间隔每30毫秒向左减2个PX;
+          ul.style.left = ul.offsetLeft + 2 + "px";
+        }
+        //第一步的思路是开启定时器，
+        closeTimer = setInterval(imgshow, 30);
+
+        //第六步。现在要考虑，当用户把鼠标移入图片的时候停止滚动效果，这里可以加一个时间关闭器
+        box.onmouseover = function() {
+          clearInterval(closeTimer);
+        };
+
+        //第七，当执行鼠标移入，效果之后、发现定时器停止了。哪么我们就要加一个鼠标移出效果。让定时器重新走起来
+        box.onmouseout = function() {
+          closeTimer = setInterval(imgshow, 30);
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div id="box">
+      <ul>
+        <li><img src="images/avatar_1.jpg" /></li>
+        <li><img src="images/avatar_2.jpg" /></li>
+        <li><img src="images/avatar_3.jpg" /></li>
+        <li><img src="images/avatar_4.jpg" /></li>
+        <li><img src="images/avatar_5.jpg" /></li>
+        <li><img src="images/user-avatar.jpg" /></li>
+      </ul>
+    </div>
+  </body>
+</html>

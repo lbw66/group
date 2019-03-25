@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 50px auto 0;
+        }
+
+        #ul1 {
+            position: relative;
+            overflow: hidden;
+            width: 520px;
+            height: 280px;
+        }
+
+        #ul1 li {
+            position:absolute;
+            opacity: 0;
+            width: 520px;
+            height: 280px;
+            transition: .5s all;
+        }
+
+        img {
+            width: 520px;
+            height: 280px;
+        }
+
+        h1,
+        h2 {
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            height: 50px;
+            width: 30px;
+            background: orange;
+            font-size: 34px;
+        }
+
+        h2 {
+            right: 0px;
+        }
+
+        #ul2 {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            width: 200px;
+            margin-left: -100px;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #ul2 li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .no {
+            transition: none;
+        }
+
+        #ul2 .on {
+            background: orange;
+        }
+        #ul1 .show{
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="ul1">
+            <li class="show" sytle="opacity:1;"><img src="img/tb-1.jpg" alt=""></li>
+            <li><img src="img/tb-2.jpg" alt=""></li>
+            <li><img src="img/tb-3.jpg" alt=""></li>
+            <li><img src="img/tb-4.jpg" alt=""></li>
+            <li><img src="img/tb-5.jpg" alt=""></li>
+        </ul>
+        <ul id="ul2">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <h1><</h1>
+        <h2>></h2>
+    </div>
+    <script>
+        window.onload = function(){
+            var box = document.getElementById("box");
+            var ul1 = document.getElementById("ul1");
+            var ul2 = document.getElementById("ul2");
+            var li1 = ul1.getElementsByTagName("li");
+            var li2 = ul2.getElementsByTagName("li");
+            var up = document.getElementsByTagName("h1")[0];
+            var down = document.getElementsByTagName("h2")[0];
+            var index = 0;
+
+            //节流
+            var throttle = function (func, time) {
+                var times = Date.now();
+                return function () {
+                    var c = this;
+                    var a = arguments;
+                    var now = Date.now();
+                    if (now - times >= time) {
+                        func.apply(c, a);
+                        times = Date.now();
+                    }
+                }
+            };
+            var timer = setInterval(next,1000);
+
+            // 两个按钮
+            up.addEventListener("click",throttle(back,700),"false")
+            down.addEventListener("click",throttle(next,700),"false")
+
+            // 鼠标放上停止计时器
+            box.addEventListener("mouseover",function(){
+                clearInterval(timer);
+            },"false")
+
+            // 移出后开始计时器
+            box.addEventListener("mouseout",function(){
+                timer = setInterval(next,1000);
+            },"false")
+
+            // 遍历小阿牛
+            for(var i = 0;i<li2.length;i++){
+                li2[i].liIndex = i;
+                li2[i].onclick = function(){
+                    index = this.liIndex;
+                    move()
+                }
+            }
+
+            // 显示下一张图片
+            function next(){
+                index++;
+                if(index == li1.length){
+                    index = 0;
+                }
+                move();
+
+            }
+
+            // 显示上一张图片
+            function back(){
+                index--;
+                if(index == -1){
+                    index = li1.length-1;
+                }
+                move();
+            }
+
+            // 渐变轮播
+            function move(){
+                for(var i = 0;i<li2.length;i++){
+                    li1[i].classList.remove("show");
+                    li2[i].classList.remove("on");
+                }
+                li1[index].classList.add("show");
+                li2[index].classList.add("on");
+            }
+
+        }
+    </script>
+</body>
+
+</html>

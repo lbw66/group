@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>网易云轮播图</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .btn {
+      margin: 50px auto;
+      width: 1200px;
+      height: 400px;
+    }
+    .btn-top {
+      position: relative;
+
+      width: 1200px;
+      height: 350px;
+      /* background: #0ff; */
+    }
+    .btn-bottom {
+      width: 1200px;
+      height: 50px;
+      /* background: #ff0; */
+      text-align: center;
+    }
+    .btn-top > ul {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .btn-top > ul > li {
+      position: absolute;
+      list-style: none;
+      transition: 0.3s;
+    }
+    .list1 {
+      transform: translateX(0) scale(0.81);
+      transform-origin: 0 100%;
+      z-index: 1;
+    }
+    .list2 {
+      transform: translateX(235px);
+      z-index: 2;
+    }
+    .list3 {
+      transform: translateX(730px) scale(0.81);
+      transform-origin: 100% 100%;
+      z-index: 1;
+    }
+    .list4 {
+      transform: translateX(965px) scale(0.81);
+      transform-origin: 100% 100%;
+    }
+    .list5 {
+      transform: translateX(1200px) scale(0.81);
+      transform-origin: 100% 100%;
+    }
+    .list6 {
+      transform: translateX(1435px) scale(0.81);
+      transform-origin: 100% 100%;
+    }
+    .btn-bottom > span {
+      display: inline-block;
+      width: 70px;
+      height: 3px;
+      background: #ccc;
+    }
+    .btn-left{
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 50%;
+      left: 0;
+      font-size: 50px;
+      z-index: 2;
+      color: #ccc;
+      cursor: pointer;
+    }
+    .btn-right{
+      position: absolute;
+      top: 50%;
+      right: 0;
+      font-size: 50px;
+      z-index: 2;
+      color: #ccc;
+      cursor: pointer;
+      /* background-image: url(); */
+      /* background:url(img/tb-1.jpg); */
+    }
+  </style>
+
+  <script>
+    window.onload = function() {
+      //初始化索引
+      var index = 0;
+      //获得span
+      var sPan = document.querySelectorAll("span");
+      //创建数组
+      var ages = ["list1", "list2", "list3", "list4", "list5", "list6"];
+      var ali = document.querySelectorAll("li");
+
+      //遍历span
+      function setLine() {
+        for (var i = 0, len = sPan.length; i < len; i++) {
+          sPan[i].style.background = "#ccc";
+        }
+        sPan[index].style.background = "#f0f";
+      }
+      setLine();
+
+      //向前轮播
+      function nextPic() {
+        // ages.unshift(ages[5]); // 吧数组最后一个名字复制并插入到第一位置
+        // ages.pop(); //删除最后一个
+        ages.push(ages[0]);
+        ages.shift();
+        for (var i = 0, len = ali.length; i < len; i++) {
+          ali[i].setAttribute("class", ages[i]);
+        }
+        index = index + 1;
+        if (index > 5) {
+          index = 0;
+        }
+        setLine();
+      }
+      // nextPic();
+
+      //向后轮播
+      function prePic() {
+        // ages.push(ages[0]); //把第一个放到最后一个位置
+        // ages.shift(); //删除第一个
+        ages.unshift(ages[5]);
+        ages.pop();
+        for (var i = 0, len = ali.length; i < len; i++) {
+          ali[i].setAttribute("class", ages[i]);
+        }
+        index = index - 1;
+        if (index < 0) {
+          index = 5;
+        }
+        setLine();
+      }
+      prePic();
+    
+      //点击左右轮播效果
+      var list1=document.querySelector(".list1");
+      var list3=document.querySelector(".list3");
+      var topl=document.querySelector(".btn-left");
+      var topr=document.querySelector(".btn-right");
+      var imgList=document.querySelector(".btn-top");
+      
+      imgList.addEventListener("click",function(e){
+         if(e.target.parentNode.getAttribute("class")==="list3"){
+            //  nextPic();
+            prePic();
+            //  throttleAjax();
+         }else if(e.target.parentNode.getAttribute("class")==="list1"){
+          // prePic();
+          nextPic()
+          // throttleAjax();
+         }
+      });
+     
+      // 点击左右轮播
+     topl.onclick=throttle(prePic,300);
+     
+     topr.onclick=throttle(nextPic,300);
+
+     
+    //点击下标轮播
+       sPan.onclick=function(){
+         
+       }
+
+  
+
+     //节流
+     function throttle(fn,data){
+             var add = 0;
+             return function(){
+                 let that = this;
+                 let ages = arguments;
+                 let curr = + new Date();
+                 if(curr - add >= data){
+                     fn.call(that,ages);
+                     add=curr;
+                 }
+             }
+         }
+     
+
+     //自动向前轮播 
+    setInterval(nextPic,2000);
+    };
+  </script>
+  <body>
+    <div class="btn">
+      <div class="btn-top">
+        <div class="btn-left"><</div>
+        <div class="btn-right">></div>
+        <ul>
+            <li><img src="img/tb-1.jpg" alt=""></li>
+            <li><img src="img/tb-2.jpg" alt=""></li>
+            <li><img src="img/tb-3.jpg" alt=""></li>
+            <li><img src="img/tb-4.jpg" alt=""></li>
+            <li><img src="img/tb-5.jpg" alt=""></li>
+            <li><img src="img/tb-1.jpg" alt=""></li>
+        </ul>
+      </div>
+      <div class="btn-bottom">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </body>
+</html>

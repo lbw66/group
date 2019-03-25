@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>淘宝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            overflow: hidden;
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 50px auto 0;
+        }
+
+        #ul1 {
+            position: relative;
+            overflow: hidden;
+            width: 3120px;
+            height: 280px;
+            transition: .5s margin-left;
+        }
+
+        #ul1 li {
+            float: left;
+            width: 520px;
+            height: 280px;
+        }
+
+        img {
+            width: 520px;
+            height: 280px;
+        }
+
+        h1,
+        h2 {
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            height: 50px;
+            width: 30px;
+            background: orange;
+            font-size: 34px;
+            cursor: pointer;
+        }
+
+        h2 {
+            right: 0px;
+        }
+
+        #ul2 {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            width: 200px;
+            margin-left: -100px;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #ul2 li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .no {
+            transition: none;
+        }
+
+        #ul2 .on {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="ul1">
+            <li><img src="img/tb-1.jpg" alt=""></li>
+            <li><img src="img/tb-2.jpg" alt=""></li>
+            <li><img src="img/tb-3.jpg" alt=""></li>
+            <li><img src="img/tb-4.jpg" alt=""></li>
+            <li><img src="img/tb-5.jpg" alt=""></li>
+            <li class="no"><img src="img/tb-1.jpg" alt=""></li>
+        </ul>
+        <ul id="ul2">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <h1><</h1>
+        <h2>></h2>
+    </div>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("box");
+            var ul1 = document.getElementById("ul1");
+            var ul2 = document.getElementById("ul2");
+            var li1 = ul1.getElementsByTagName("li");
+            var li2 = ul2.getElementsByTagName("li");
+            var up = document.getElementsByTagName("h1")[0];
+            var down = document.getElementsByTagName("h2")[0];
+            var index = 0;
+
+            //节流
+            var throttle = function (func, time) {
+                var times = Date.now();
+                return function () {
+                    var c = this;
+                    var a = arguments;
+                    var now = Date.now();
+                    if (now - times >= time) {
+                        func.apply(c, a);
+                        times = Date.now();
+                    }
+                }
+            };
+
+            var timer = setInterval(scroll, 1500);
+            box.onmouseover = function () {
+                clearInterval(timer)
+            };
+            box.onmouseout = function () {
+                timer = setInterval(scroll, 1500)
+            };
+
+
+            // 右点击按钮
+            down.addEventListener("click", throttle(scroll, 500), false);
+
+            // 左点击按钮
+            up.addEventListener("click", throttle(function () {
+                if (index === 0) {
+                    // 如果当前是第一张，则偷偷换成备用图片
+                    index = li1.length - 1;
+                    ul1.style.left = -index * box.offsetWidth + "px";
+                }
+                index--;
+                move(ul1, 10, -index * box.offsetWidth);
+                indexShow();
+            }, 500), false);
+
+
+            // 给下标遍历点击按钮
+            for (var i = 0; i < li2.length; i++) {
+                li2[i].liIndex = i;
+                li2[i].onclick = function () {
+                    index = this.liIndex;
+                    move(ul1, 5, -index * box.offsetWidth);
+                    indexShow();
+                }
+            }
+
+            // 向右轮播
+            function scroll() {
+                // 在从备份轮第二个的时候先秒回第一个
+                if (index === li1.length - 1) {
+                    index = 0;
+                    ul1.style.left = 0 + "px";
+                }
+                index++;
+                move(ul1, 10, -index * box.offsetWidth);
+                // console.log(box.offsetWidth)
+                indexShow();
+            }
+
+            // 图片与页码同步
+            function indexShow() {
+                for (var i = 0; i < li2.length; i++) {
+                    if (i === index) {
+                        li2[i].classList.add("on");
+                    } else {
+                        li2[i].classList.remove("on");
+                    }
+                    // 当index 轮到备用图片时,页码显示第一张
+                    if (index === li1.length - 1) {
+                        li2[0].classList.add("on")
+                    }
+                }
+            }
+
+            // obj:执行动画的对象 sp:动画移动速度 target:执行动画的目标位置 
+            function move(obj, sp, target) {
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function () {
+                    // 获取当前位置
+                    var oldValue = obj.offsetLeft;
+                    if (oldValue > target) { //向左移动
+                        oldValue -= 20;
+                        obj.style.left = oldValue + "px";
+                    } else if (oldValue < target) { //向右移动
+                        oldValue += 20;
+                        obj.style.left = oldValue + "px";
+                    } else {
+                        clearInterval(obj.timer);
+                        obj.style.left = target + "px";
+                    }
+                }, sp)
+            }
+
+        }
+    </script>
+</body>
+
+</html>
