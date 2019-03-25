@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第四个轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 外层 */
+        .outer{
+            width: 500px;
+            margin:  100px auto;
+            background: red;
+            height: 280px;
+
+        }
+        .content{
+            height: 280px;
+            width: 520px;
+            position: relative;
+            
+        }
+        .content > div{
+            transform-style: preserve-3d;
+            position: relative;
+            width: 130px;
+            height: 100%;
+            transition: transform 1s;
+        }
+        
+
+        
+        /* 上面 */
+        .content .top{
+            float: left;
+            /* transform: rotateX(45deg) rotateY(45deg); */
+            /* transform: rotateX(-0deg) */
+            transition-delay: 0s;
+        }
+        .img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 第一个 */
+        
+        /* 前 */
+        .top .img:nth-child(1){
+            background-image: url(img/tb-2.jpg);
+            background-position: -0px 0px;
+            transform: translateZ(140px);
+           
+            
+        }
+        /* 下 */
+        .top .img:nth-child(2){
+            background-image: url(img/tb-3.jpg);
+            background-position: -0px 0px;
+            /* background: blanchedalmond; */
+            
+            transform: rotateX(90deg) translateZ(140px);
+        }
+        /* 前 */
+        .top .img:nth-child(3){
+            background-image: url(img/tb-4.jpg);
+            background-position: -0px 0px;
+            /* background: violet; */
+            transform:rotateX(180deg) translateZ(140px);
+        }
+        /* 后 */
+        .top .img:nth-child(4){
+            background-image: url(img/tb-5.jpg);
+            background-position: -0px 0px;
+            /* background: saddlebrown; */
+            /* height: 130px; */
+            transform: rotateX(-90deg) translateZ(140px);
+            
+        }
+
+        .content .buttom{
+            float: left;
+            transition-delay: 0.2s;
+            /* transform: rotateX(-90deg); */
+        }
+
+        /* 第二个 */
+        /* 前 */
+        .buttom .img:nth-child(1){
+            background-image: url(img/tb-2.jpg);
+            background-position: -130px 0px;
+           
+            transform: translateZ(140px);
+           
+            
+        }
+        /* 下 */
+        .buttom .img:nth-child(2){
+            background-image: url(img/tb-3.jpg);
+            background-position: -130px 0px;
+            /* background: blanchedalmond; */
+            
+            transform: rotateX(90deg) translateZ(140px);
+        }
+        /* 前 */
+        .buttom .img:nth-child(3){
+            background-image: url(img/tb-4.jpg);
+            background-position: -130px 0px;
+            
+            /* background: violet; */
+            transform:rotateX(180deg) translateZ(140px);
+        }
+        /* 后 */
+        .buttom .img:nth-child(4){
+            background-image: url(img/tb-5.jpg);
+            background-position: -130px 0px;
+            /* background: saddlebrown; */
+            /* height: 130px; */
+            transform: rotateX(-90deg) translateZ(140px);
+            
+        }
+
+        .content .front{
+            float: left;
+            transition-delay: 0.4s;
+            /* transform: rotateX(-180deg); */
+        }
+        
+        /* 第三个 */
+        /* 前 */
+        .front .img:nth-child(1){
+            background-image: url(img/tb-2.jpg);
+            background-position: -260px 0px;
+            
+            transform: translateZ(140px);
+           
+            
+        }
+        /* 下 */
+        .front .img:nth-child(2){
+            background-image: url(img/tb-3.jpg);
+            background-position: -260px 0px;
+            
+            /* background: blanchedalmond; */
+            
+            transform: rotateX(90deg) translateZ(140px);
+        }
+        /* 前 */
+        .front .img:nth-child(3){
+            background-image: url(img/tb-4.jpg);
+            background-position: -260px 0px;
+            /* background: violet; */
+            transform:rotateX(180deg) translateZ(140px);
+        }
+        /* 后 */
+        .front .img:nth-child(4){
+            background-image: url(img/tb-5.jpg);
+            background-position: -260px 0px;
+            /* background: saddlebrown; */
+            /* height: 130px; */
+            transform: rotateX(-90deg) translateZ(140px);
+            
+        }
+        .content .back{
+            float: left;
+            transition-delay: 0.6s;
+            /* transform: rotateX(-270deg); */
+        }
+        /* 第四个 */
+       /* 前 */
+       .back .img:nth-child(1){
+            background-image: url(img/tb-2.jpg);
+            background-position: -390px 0px;
+            
+            transform: translateZ(140px);
+           
+            
+        }
+        /* 下 */
+        .back .img:nth-child(2){
+            background-image: url(img/tb-3.jpg);
+            background-position: -390px 0px;
+            
+            /* background: blanchedalmond; */
+            
+            transform: rotateX(90deg) translateZ(140px);
+        }
+        /* 前 */
+        .back .img:nth-child(3){
+            background-image: url(img/tb-4.jpg);
+            background-position: -390px 0px;
+            
+            /* background: violet; */
+            transform:rotateX(180deg) translateZ(140px);
+        }
+        /* 后 */
+        .back .img:nth-child(4){
+            background-image: url(img/tb-5.jpg);
+            background-position: -390px 0px;
+
+            transform: rotateX(-90deg) translateZ(140px);
+            
+        }
+        /* 左右按钮 */
+        .menu{
+            position: absolute;
+            top: 108px;
+        }
+        .menu > div{
+        font-size: 32px;
+        position: absolute;
+        cursor: pointer;
+        width: 25px;
+        height: 50px;
+        background: red;
+        }
+        #prev{
+        left: 10px;
+        /* display: none; */
+        }
+        #next{
+            right: -385px;
+            /* display: none; */
+        }
+    </style>
+</head>
+<body>
+    <!-- 外层 - 开始 -->
+    <div class="outer">
+        <!-- 内容 - 开始 -->
+        <div class="content">
+            <!-- 第一个 - 开始 -->
+            <div class="top item" id="top">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <!-- 第一个 - 结束 -->
+
+            <!-- 第二个 - 开始 -->
+            <div class="buttom item" id="buttom">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <!-- 第二个 - 结束 -->
+
+            <!-- 第三个 - 开始 -->
+            <div class="front item" id="front">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <!-- 第三个 - 结束 -->
+
+            <!-- 第四个 - 开始 -->
+            <div class="back item" id="back">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
+            <!-- 第四个 - 结束 -->
+
+            <!-- 按钮 -->
+            <div class="menu">
+                <div id="prev">&lt;</div>
+                <div id="next">&gt;</div>
+            </div>
+        </div>
+        <!-- 内容 - 结束 -->
+    </div>
+    <!-- 外层 - 结束 -->
+
+    <!-- <script src="tools.js"></script> -->
+    <script>
+        window.onload = function(){
+            //获取左右点击按钮
+            var prev = document.getElementById("prev")
+            var next = document.getElementById("next")
+
+            var buttons = document.querySelectorAll(".menu div")
+            // alert(buttons.length)
+
+            //获取item
+            var itemsDiv = document.querySelectorAll(".item")
+            // alert(itemsDiv.length)
+            //声明一个旋转索引
+            var num = 0;
+
+            //设置一个节流
+            var flag = true;
+
+            
+            itemsDiv[itemsDiv.length - 1].addEventListener('transitionend', function () {
+                // console.log(1);
+                // 在过渡执行完毕之后重新打开开关
+                flag = true;
+            })
+
+            //节流
+            function throttle(fn,time){
+                var beforeTime = 0;
+                return function(){
+                    var self = this;
+                    var args = arguments;
+                    var currenTime = +new Date();
+                    if(currenTime - beforeTime >= time){
+                        fn.apply(self , args);
+                        beforeTime = currenTime;
+                    }
+                }
+            }
+
+            prev.onclick = throttle(function(){
+                clearTimeout(time)
+                prevPic()
+                time = setInterval(move,timejg);
+            },1000)
+            next.onclick = throttle(function(){
+                clearTimeout(time)
+                nextPic()
+                time = setInterval(move,timejg);
+            },1000)
+
+
+
+            // //点击左边按钮
+            function prevPic(){
+                prev.setAttribute('data-index',0);
+                var index = prev.dataset['index'];
+                if (index == 0) {
+                    num--;
+                    for (var i = 0; i < itemsDiv.length; i++) {
+                        itemsDiv[i].style.transform = 'rotateX(' + num * 90 + 'deg)';
+                    }
+                }
+            }
+
+            // //点击右边按钮
+            function nextPic(){
+                next.setAttribute('data-index',0);
+                var index = prev.dataset['index'];
+                if (index == 0) {
+                    num++;
+                    for (var i = 0; i < itemsDiv.length; i++) {
+                        itemsDiv[i].style.transform = 'rotateX(' + num * 90 + 'deg)';
+                    }
+                }
+            }
+
+
+            //获取第一个立方体
+            var top = document.getElementById("top");
+            //获取第二个立方体
+            var buttom = document.getElementById("buttom");
+            //获取第三个立方体
+            var front = document.getElementById("front");
+            //获取第四个立方体
+            var back = document.getElementById("back");
+
+      
+
+		
+            var timejg=1000;//轮播间隔时间
+            var time = setInterval(move,timejg);
+            function move(){
+                num--;
+                for (var i = 0; i < itemsDiv.length; i++) {
+                    flag = false;
+                    itemsDiv[i].style.transform = 'rotateX(' + (num * 90) + 'deg)';
+                }
+                console.log(num)
+            }
+
+
+        }
+    </script>
+
+
+
+  
+</body>
+</html>

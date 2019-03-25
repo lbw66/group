@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .cen{
+            width:520px;
+            height: 280px;
+            margin:300px auto 0;
+        }
+        .box{
+            position:relative;
+            width:520px;
+            height: 280px;
+            transform-style: preserve-3d;
+            transform: perspective(500px);
+            border:1px solid #ccc;
+            transform:rotateX(0deg);
+            transform-origin:center center 140px;
+        }
+        .box div{
+            width:520px;height:280px;
+            position: absolute;
+            border:1px solid skyblue;
+        }
+        .box div:nth-child(1){
+            transform: translateZ(280px);
+        }
+        .box div:nth-child(2){
+            transform: rotateX(180deg);
+        }
+        .box div:nth-child(3){
+            transform:rotateX(90deg);
+            transform-origin:top;
+        }
+        .box div:nth-child(4){
+            transform:rotateX(-90deg);
+            transform-origin:bottom;
+        }
+        .box div h1{
+            display: inline-block;
+            height:280px;width:130px;
+            transition:.2s all;
+            transform-origin:center center 140px;
+        }
+        .box div h1:nth-child(1){
+            background-position: 0 280px;
+        }
+        .box div h1:nth-child(2){
+            background-position: -130px 280px;
+        }
+        .box div h1:nth-child(3){
+            background-position: -260px 280px;
+        }
+        .box div h1:nth-child(4){
+            background-position: -390px 280px;
+        }
+        .box div:nth-child(1) h1{
+            background-image: url(img/tb-1.jpg);
+        }
+        .box div:nth-child(2) h1{
+            background-image: url(img/tb-2.jpg);
+        }
+        .box div:nth-child(3) h1{
+            background-image: url(img/tb-3.jpg);
+        }
+        .box div:nth-child(4) h1{
+            background-image: url(img/tb-4.jpg);
+        }
+    </style>
+</head>                
+<body>
+    <div class="cen">
+        <div class="box">
+            <div><h1></h1><h1></h1><h1></h1><h1></h1></div>
+            <div><h1></h1><h1></h1><h1></h1><h1></h1></div>
+            <div><h1></h1><h1></h1><h1></h1><h1></h1></div>
+            <div><h1></h1><h1></h1><h1></h1><h1></h1></div>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            var box = document.getElementsByClassName("box")[0];
+            var li1 = box.getElementsByTagName("div");
+            var go = null;
+            var index = 0;
+            // console.log(li1[0].children)
+            // 滚动效果
+            move()
+            function move(){
+               index++;
+               for(var i =0;i<li1.length;i++){
+                   li1[i].style.transform = 'rotateX('+index*90+"deg)";
+               }
+            }
+        }
+    </script>
+</body>
+</html>
