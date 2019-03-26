@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开关下拉框</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .kuang{
+        width: 100px;
+        height: 40px;
+        border: 1px solid rgb(107, 107, 107);
+        background: rgb(197, 197, 197);
+        border-radius: 20px;
+        transition: all 0.5s;
+    }
+    .kuang1{
+        width: 100px;
+        height: 40px;
+        border: 1px solid rgb(20, 51, 22);
+        background: rgb(101, 184, 98);
+        border-radius: 20px;
+        transition: all 0.5s;
+    }
+    .an{
+        width: 36px;
+        height: 36px;
+        background: rgb(107, 107, 107);
+        border-radius: 18px;
+        margin: 2px;
+        transition: all 0.5s;
+    }
+    .an1{
+        width: 36px;
+        height: 36px;
+        background: rgb(255, 255, 255);
+        border-radius: 18px;
+        margin: 2px;
+        float: right;
+        transition: all 0.5s;
+    }
+    ul{
+        display: block;
+        width: 100px;
+        background: rgb(119, 246, 255);
+        margin-top: 20px;
+        cursor: pointer;
+    }
+    li{
+        display: block;
+        background: rgb(137, 255, 190);
+        border-bottom: 1px solid #000;
+        display: none;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="kuang" class="kuang">
+        <div id="an" class="an"></div>
+    </div>
+    <ul id="ul1">
+        嘤嘤嘤
+        <li>1111</li>
+        <li>22222</li>
+        <li>33333</li>
+    </ul>
+    <ul id="ul2">
+        嘻嘻嘻
+            <li>1111</li>
+            <li>22222</li>
+            <li>33333</li>
+        </ul>
+        <ul id="ul3">
+            哈哈哈
+                <li>1111</li>
+                <li>22222</li>
+                <li>33333</li>
+            </ul>
+    <script src="./underscore.js"></script>
+    <script src="../../JS/jquery-3.3.1.js"></script>
+    <script>
+        $(function(){
+            $("#kuang").click(() => {
+                $("#kuang").toggleClass("kuang1");
+                $("#an").toggleClass("an1");
+            });
+            $("#ul1").click(() => {
+                $("#ul1 li").slideToggle();
+            });
+            $("#ul2").click(() => {
+                $("#ul2 li").slideToggle();
+            });
+
+            $("#ul3").click(() => {
+                $("#ul3 li").slideToggle();
+            });
+
+
+
+        })
+
+    </script>
+</body>
+</html>

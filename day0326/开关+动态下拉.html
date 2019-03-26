@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开关+动态下拉框</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+      
+        .switch{
+            position:relative;
+            height:30px;
+            width: 60px;
+            background:#fff;
+            border-radius: 15px;border:1px solid #ccc;
+            /*删除默认样式*/
+            -webkit-appearance: none;
+            transition:1s left;
+            outline: none;
+        }
+        .switch:before{
+            content: '';
+            position:absolute;
+            top:0;
+            left:0;
+            height:27px;
+            width: 26px;
+            border-radius: 50%;border:1px solid #ccc;
+            background:#fff;
+            transition:.5s all;
+        }
+        .switch:checked{
+            background:skyblue;
+        }
+        .switch:checked:before{
+            left:30px;
+        }
+        ul{
+            list-style: none;
+        }
+        #box ul {
+            background: #2CB7DB;
+        }
+        #box ul li{
+            background:#00be90;
+            display: none;
+        }
+        #box2 ul {
+            height:30px;width:200px;margin:100px;
+            display: flex;
+            justify-content: space-around;
+        }
+        #box2 ul li{
+            height:30px;width: 30px;
+            border-radius: 50%;
+            background: linear-gradient(to left,skyblue,greenyellow)
+        }
+        #box2 .active{
+            background:linear-gradient(to right,black,white);
+        }
+    </style>
+</head>
+<body>
+    <input class="switch switch-anim" type="checkbox" >
+    <div id="box">
+        <ul><a href="javascript:;">gogogo</a>
+            <li>123</li>
+            <li>12</li>
+            <li>1</li>
+        </ul>
+        <ul><a href="javascript:;">gogogo</a>
+            <li>123</li>
+            <li>12</li>
+            <li>1</li>
+        </ul>
+        <ul><a href="javascript:;">gogogo</a>
+            <li>123</li>
+            <li>12</li>
+            <li>1</li>
+        </ul>
+    </div>
+    
+    <button id="btn">gogogo</button>
+    <div id="box2">
+        <ul>
+            <li class="active go"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="../../JS/jquery-3.3.1.js"></script>
+    <script>
+    $(function(){
+        $("#btn").click(function(){
+            $("#box ul li").slideToggle("fast");
+            
+        });
+        // 动态下拉列表
+        $("#box a").click(function(){
+           console.log($(this).index());
+            $(this).siblings().slideToggle().parent().siblings().children("a").siblings().slideUp();
+           console.log($(this).index());
+
+        })
+
+        // console.log($("#box2 ul li").siblings() );
+        // box2
+        // $("#box2 ul li").click(function(){
+        //     $("#box2 li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+        // });
+    });
+    window.onload = function(){
+        var box2 = document.getElementById("box2");
+        var ul1 = box2.getElementsByTagName("ul")[0];
+        var li1 = ul1.getElementsByTagName("li");
+        // console.log(ul1.children[0]);
+
+        // 添加class 属性值
+        Object.prototype.addClass = function(value){
+            this.classList.add(value);
+            return this;
+        };
+        // className有value 则删除value
+        Object.prototype.removeClass = function(value){
+            for(var r = 0;r<this.length;r++){
+                // if(this[r].className == value){
+                if(this[r].classList.contains(value) === true){
+                    this[r].classList.remove(value);
+                }
+            }
+            // this.classList.remove(value);
+            return this;
+        }
+        // eq()获取匹配的第几项
+        Object.prototype.eq = function(index){
+            return this[index];
+        }
+        //获取兄弟元素
+        Object.prototype.siblings = function(){
+            // this.parent.children
+            var a = [];
+            var b = this.parentNode.children;
+            for(var z = 0;z<b.length;z++){
+                if(b[z] !== this){
+                    a.push(b[z]);
+                }
+            }
+            return a;
+        }
+        // console.log(li1[0].parentNode.children  )
+        for(var i = 0;i<li1.length;i++){
+            li1[i].index = i;
+            li1[i].onclick = function(){
+                li1.eq(this.index).addClass("active").siblings().removeClass("active");
+                // console.log(li1.eq(this.index).addClass("active").siblings())
+            }
+        }
+        // for(var zz = 0;zz<li1.length;zz++){
+        //     if(li1[zz].classList.contains("active")
+        // }
+    }
+</script>
+</body>
+</html>
