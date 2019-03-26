@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.$ = function(id) {
+            return new _$(id);
+        }
+
+        function _$(id) {
+            this.elements = document.getElementById(id);
+        }
+        _$.prototype = {
+            constructor: _$,
+            hide: function() {
+                console.log('hide');
+                return this;
+            },
+            show: function() {
+                console.log('show');
+                return this;
+            }
+        }
+        $('id').show().hide().show().hide().show();
+    </script>
+</body>
+
+</html>

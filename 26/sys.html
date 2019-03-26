@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1 {
+            width: 60px;
+            height: 26px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .div1 .left {
+            position: absolute;
+            left: 4px;
+        }
+        
+        .div1 .right {
+            position: absolute;
+            right: 4px;
+        }
+        
+        .div2 {
+            width: 30px;
+            height: 20px;
+            border-radius: 9px;
+            background: #fff;
+            position: absolute;
+        }
+        
+        .open1 {
+            background: #ddd;
+        }
+        
+        .open2 {
+            top: 3px;
+            left: 5px;
+        }
+        
+        .close1 {
+            width: 60px;
+            height: 26px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            background: #659dea;
+        }
+        
+        .close2 {
+            left: 25px;
+            top: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1 open1">
+        <span class="left"></span>
+        <span class="right"></span>
+        <div class="div2 open2"></div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/2.0.2/jquery.js"></script>
+    <script>
+        $(function() {
+            $(".div2").on('click', function() {
+                // console.log('className======='+$(this).parent().get(0).className)
+                $(this).parent().toggleClass('close1');
+                $(this).parent().toggleClass('open1');
+                $(this).toggleClass('close2');
+                $(this).toggleClass('open2');
+            })
+        });
+    </script>
+
+
+</body>
+
+</html>
