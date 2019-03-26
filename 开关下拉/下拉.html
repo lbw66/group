@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        height: 300px;
+        width: 300px;
+
+    }
+    .top{
+        height: 30px;
+        background: -moz-linear-gradient(to right, skyblue , pink);
+    }
+    .top2{
+        height: 30px;
+        background: -moz-linear-gradient(to right, skyblue , pink);
+    }
+    .top3{
+        height: 30px;
+        background: -moz-linear-gradient(to right, skyblue , pink);
+    }
+    .contain{
+        height: 30px;
+        background: -moz-linear-gradient(to left top, rgb(216, 216, 216),rgb(115,100,215));
+        display: none;
+      
+    }
+    .contain2{
+        height: 30px;
+        background: -moz-linear-gradient(to left top, rgb(216, 216, 216),rgb(115,100,215));
+        display: none;
+    }
+    .contain3{
+        height: 30px;
+        background: -moz-linear-gradient(to left top, rgb(216, 216, 216),rgb(115,100,215));
+        display: none;
+    }
+  
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+           <div class="top">
+            第一行
+           </div>
+           <div class="contain">aaa</div>
+           <div class="contain">aaa</div>
+           <div class="contain">aaa</div>
+           <div class="top2">
+            第二行
+           </div>
+           <div class="contain2">aaa</div>
+           <div class="contain2">aaa</div>
+           <div class="contain2">aaa</div>
+           <div class="top3">
+            第三行
+           </div>
+           <div class="contain3">aaa</div>
+           <div class="contain3">aaa</div>
+           <div class="contain3">aaa</div>
+    </div>
+       
+    <script src="./jquery-1.10.1.js">
+    </script>
+    <script>
+ $(document).ready(function(){
+  $(".top").click(function(){
+      $(".contain").slideToggle("fast");
+  })
+  $(".top2").click(function(){
+      $(".contain2").slideToggle("normal");
+  })
+  $(".top3").click(function(){
+      $(".contain3").slideToggle("slow");
+  })
+ })
+    </script>
+</body>
+</html>

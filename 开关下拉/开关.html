@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /* .btn{
+        height: 30px;
+        width: 60px;
+        border-radius: 20px;
+        background: #cccccc;
+        
+    }
+    
+    .box{
+        height: 30px;width: 30px;
+        border-radius: 50%;
+        background: white;
+    } */
+    .switch{
+            position:relative;
+            height:30px;
+            width: 60px;
+            background:#fff;
+            border-radius: 15px;border:1px solid #ccc;
+            /*删除默认样式*/
+            -webkit-appearance: none;
+            transition:1s left;
+            outline: none;
+        }
+        .switch:before{
+            content: '';
+            position:absolute;
+            top:0;
+            left:0;
+            height:27px;
+            width: 26px;
+            border-radius: 50%;border:1px solid #ccc;
+            background:#fff;
+            transition:.5s all;
+        }
+        .switch:checked{
+            background:skyblue;
+        }
+        .switch:checked:before{
+            left:30px;
+        }
+    </style>
+</head>
+<body>
+
+    <input class="switch switch-anim" type="checkbox" >
+    
+    <!-- <script src="./jquery-1.10.1.js"></script>
+    <script>
+    $(document).ready(function(){
+     $(".btn").click(function(){
+     $(".box").css("float","right")
+     $(".btn").css("background","#beff90");
+     })
+    })
+    </script> -->
+</body>
+</html>

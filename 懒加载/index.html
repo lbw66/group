@@ -22,6 +22,12 @@
        margin:250px auto;
        height: 200px;
        width: 200px;
+       opacity: 0.5;
+       transition: 2s all;
+   }
+   ul{
+       margin-top: 200px;
+       border: 1px solid;
    }
     </style>
 </head>
@@ -36,16 +42,24 @@
          <li><img data-src="img/5.jpg" alt=""></li>
          <li><img data-src="img/6.jpg" alt=""></li>
          <li><img data-src="img/7.jpg" alt=""></li>
+         <li><img data-src="img/5.jpg" alt=""></li>
+         <li><img data-src="img/6.jpg" alt=""></li>
+         <li><img data-src="img/7.jpg" alt=""></li>
      </ul>
     </div>
 <script>
 
 function imgonload(){
     let imgs=document.querySelectorAll("img");
-    
+    //  对所有图片进行遍历
     for(let i=0;i<imgs.length;i++){
-      if(imgs[i].getBoundingClientRect().top <window.innerHeight){//getBoundingClientRect()该方法用于获取某个元素相对于视窗的位置集合。集合中有top, right, bottom, left等属性。
+                    // innerheight	返回窗口的文档显示区的高度。
+                    // 进行判断 如果照片顶部位置小于文档窗口高度
+      if(imgs[i].getBoundingClientRect().top <window.innerHeight){
+          //getBoundingClientRect()该方法用于获取某个元素相对于视窗的位置集合。集合中有top, right, bottom, left等属性。
+//  对img.src赋值
            imgs[i].src=imgs[i].dataset.src;
+           imgs[i].style.opacity=1;
       }
     }
 }
@@ -60,6 +74,22 @@ function debounce(fn,time){
     },3000);
  }
 }
+// window.onload=window.onscroll =debounce(()=>{
+//     var lis=document.getElementsByTagName("li");
+//     var imgs=document.getElementsByTagName("img");
+//     for(var i=0;i<lis.length;i++){
+//         //接收元素的高度
+//         var ofT=getElementTOP(lis[i]);
+//        var dcH= document.documentElement.clientHeight;
+//        var dsT= document.documentElement.scrollTop;
+//        if(ofT<(dcH+dsT)){
+//            imgs[i].src=imgs[i].dataset.src;
+//        }
+       
+//     }
+// },300)
+
+
 
 </script>
 <script>
