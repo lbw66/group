@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js链式写法完成切换选项卡</title>
+    <style>
+        body {
+            background: plum;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .warp {
+            width: 300px;
+            height: 50px;
+            margin: 200px auto;
+            background: #00FF99;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        li {
+            margin-top: 10px;
+            float: left;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #eee;
+            cursor: pointer;
+        }
+
+        .show {
+            background: linear-gradient(to right, pink, red, skyblue);
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <ul>
+        <li class="show"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script>
+    window.onload = function () {
+        var lis = document.querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i;
+            lis[i].onclick = function () {
+                lis.eqa(this.index).addClass1('show').siblings().removeClass1();
+            }
+        }
+        Object.prototype.addClass1 = function (value) {
+            this.className = value;
+            return this;
+        };
+        Object.prototype.removeClass1 = function () {
+            for (var i = 0; i < this.length; i++) {
+                this[i].className = "";
+            }
+            return this;
+        };
+        Object.prototype.eqa = function (index) {
+            return this[index];
+        };
+        Object.prototype.siblings = function () {
+            var arr = [];
+            var lisNone = this.parentNode.children;
+            for (let i = 0; i < lisNone.length; i++) {
+                if (this !== lisNone[i]) {
+                    arr.push(lisNone[i]);
+                }
+            }
+            return arr;
+        }
+    };
+</script>
+</body>
+</html>
