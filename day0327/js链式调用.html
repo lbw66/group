@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js模拟jq链式调用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box ul {
+            background: #2CB7DB;
+        }
+
+        #box ul li {
+            background: #00be90;
+            display: none;
+        }
+
+        #box2 ul {
+            height: 30px;
+            width: 200px;
+            margin: 100px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #box2 ul li {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: linear-gradient(to left, skyblue, greenyellow)
+        }
+
+        #box2 .active {
+            background: linear-gradient(to right, black, white);
+        }
+        #box2 .on{
+            background:yellow;
+        }
+    </style>
+</head>
+
+<body>
+        <div id="box2">
+            
+            <ul>
+                <li class="go"></li>
+                <li class="on"></li>
+                <li class="on"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        
+    <button id="btn">gogogo</button>
+    <script src = "../../JS/jquery-3.3.1.js"></script>
+    <!-- <script>
+        // $("box2 .on").siblings().addClass("active")
+        console.log([...$("#box2 .on").siblings()]);
+    </script> -->
+    <script>
+        window.onload = function () {
+            // 模拟$("")
+            window.$ = function (ele){
+                return new JQ(ele);
+            }
+            function JQ(ele){
+                var a = [1,2.3];
+                var b = [4,...a,9];
+                var qsAll = document.querySelectorAll(ele);
+                this.eles = [...qsAll];
+                // this.eles = Array.prototype.slice.call(qsAll,0);
+                this.tempEles = this.eles.slice(0);
+                return this;
+            }
+            JQ.prototype = {
+                eq:function(index){
+                    console.log(this.tempEles)
+                    this.tempEles = [];
+                    this.tempEles.push(this.eles[index]);
+                    console.log(this.tempEles);
+                    return this;
+                },
+                addClass:function(className){
+                    this.tempEles.forEach(function(item,index){
+                        item.classList.add(className);
+                    });
+                    console.log(this.tempEles)
+                    return this;
+                },
+                removeClass:function(className){
+                    this.tempEles.forEach(function(item,index){
+                        item.classList.remove(className);
+                    })
+                    return this;
+                },
+                siblings:function(){
+                    var b = [];
+                    this.tempEles.forEach(function(item,index){
+                        var pc = [...item.parentNode.children];
+                        pc.forEach(function(item2,index2){
+                            if(item !== item2){
+                                b.push(item2);
+                            }
+                        })
+                    })
+                    this.tempEles = b.slice(0);
+                    console.log(this.tempEles);
+                    return this;
+                }
+            }
+            console.log($("#box2 .go").siblings().eq(1));
+            $("#box2 li").eq(4).siblings().addClass("active");
+           
+        }
+    </script>
+</body>
+
+</html>
