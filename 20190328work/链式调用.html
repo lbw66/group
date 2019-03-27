@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">1</div>
+<div class="box">2</div>
+<div class="box">3</div>
+<div></div>
+</body>
+<script>
+    window.JQUERY = window.$ = function (select) {
+        return new JquerCon(select);
+    };
+
+    function JquerCon(select) {
+        var arr = document.querySelectorAll(select);
+        this.elements = Array.prototype.slice.call(arr, 0);
+
+        this.temp = this.elements.slice(0);
+        return this;
+    }
+
+    JquerCon.prototype = {
+        addClass: function (className) {
+            this.temp.forEach(function (item, index) {
+                item.classList.add(className);
+            });
+            return this;
+        },
+        removeClass: function (className) {
+            this.temp.forEach(function (item, index) {
+                item.classList.remove(className);
+            });
+            return this
+        },
+        eq: function (index) {
+            this.temp = [];
+            this.temp.push(this.elements[index]);
+            this.idx = index;
+            return this
+        },
+        siblings: function () {
+            this.temp = [];
+            for (var i = 0; i < this.elements.length; i++) {
+                if (this.idx !== i) {
+                    this.temp.push(this.elements[i]);
+                }
+            }
+            return this;
+        }
+    };
+    $('.box').addClass("haha").eq(0).addClass("asd").siblings().removeClass("box");
+
+    // function JqueryConusrinor(select) {
+    //     var arr = document.querySelectorAll(select);
+    //     this.elements = Array.prototype.slice.call(arr, 0);
+    //     this.temp = this.elements.slice(0);
+    //     //构造函数不能直接执行 返回this说明
+    //     return this;
+    // }
+
+    // JqueryConusrinor.prototype = {
+    //     addClass: function (className) {
+    //         this.temp.forEach(function (item, index) {
+    //             item.classList.add(className);
+    //         });
+    //         return this;
+    //     },
+    //     removeClass: function (className) {
+    //         this.temp.forEach(function (item, index) {
+    //             item.classList.remove(className);
+    //         })
+    //     },
+    //     eq: function (index) {
+    //         this.temp = [];
+    //         this.temp.push(this.elements[index]);
+    //         this.ind = index;
+    //         return this;
+    //     },
+    //     siblings: function () {
+    //         this.temp = [];
+    //         for (var i = 0; i < this.elements.length; i++) {
+    //             if (i !== this.ind) {
+    //                 this.temp.push(this.elements[i])
+    //             }
+    //         }
+    //         return this;
+    //     }
+    // };
+    // JqueryConusrinor.prototype = {
+    //     addClass: function (className) {
+    //         this.temp.forEach(function (item, index) {
+    //             item.classList.add(className)
+    //         });
+    //         return this;
+    //     },
+    //     removeClass: function (className) {
+    //         this.temp.forEach(function (item, index) {
+    //             item.classList.remove(className)
+    //         });
+    //         return this;
+    //     },
+    //     eq: function (index) {
+    //         this.temp = [];
+    //         this.temp.push(this.elements[index]);
+    //         this.ind = index;
+    //         return this;
+    //     },
+    //     siblings: function () {
+    //         this.temp = [];
+    //         for (let i = 0; i < this.elements.length; i++) {
+    //             if (i !== this.ind) {
+    //                 this.temp.push(this.elements[i]);
+    //             }
+    //         }
+    //         return this;
+    //     }
+    // };
+    // $('.box').eq(0).addClass('我是新添加的类').siblings().removeClass('box').eq(1).siblings().addClass("asds");
+</script>
+</html>
