@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>链式调用</title>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+    window.jquery =window.$=function(selector){
+        var a=new jqueryConstructor(selector)
+        var b=new jqueryConstructor(selector)
+        return a;//可操作的DOM对象
+    }
+
+    function jqueryConstructor(selector){
+        var nList=document.querySelectorAll(selector);
+        console.log(nList);
+        this.eles=Array.prototype.slice.call(nList,0);
+        this.Eles=this.eles.slice(0);//临时储存dom集合
+        return this;
+    }
+    //在方法原型上添加公共方法  所有的对象都可以调用
+
+    jqueryConstructor.prototype={
+        addClass : function(className){
+            this.Eles.forEach(function(item,index){
+                item.classList.add(className);
+            });
+            return this;
+        },
+        removeClass :function(className){
+            this.Eles.forEach(function(item,index){
+                     item.classList.remove(className);
+            });
+            return this;
+        },
+        eq :function(index){
+            this.Eles =[];//清空临时暂存数组
+           this.Eles.push(this.eles[index]);
+           return this;
+        }
+      
+    
+        
+    }
+    console.log($(".box").eq(0))
+
+        $(".box").eq(0).addClass("第二个");
+    </script>
+
+</body>
+</html>
