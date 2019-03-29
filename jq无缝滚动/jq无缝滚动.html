@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+                margin: 0px;padding: 0px;
+            }
+            ul{
+                list-style: none;
+            }
+            #box{
+                position: relative;
+                width: 520px;height: 280px;
+                border: 1px solid red;
+                margin: 100px auto;
+                overflow: hidden;
+            }
+            #ul1{
+                position: relative;
+                width: 3120px;
+                display: flex;
+            }
+            #ul1 li img{
+                width: 520px;
+    height: 280px;
+            }
+            #ul2{
+                position: relative;
+                top: -34px;
+                margin: 0 auto;
+                width: 150px;   
+                display: flex;
+                justify-content: space-between;
+            }
+            #ul2 li{
+                width: 15px;height: 15px;
+                background: #fff;
+                border-radius: 50%;
+            }
+         
+            #ul2 .on{
+                background:linear-gradient(to right,yellow,skyblue);
+            }
+            button{
+                position:absolute;
+                top: 50%;
+                border: none;
+                outline: none;
+                width: 20px;height: 30px;
+                background: rgba(0,0,0,.3);
+                color: #fff;
+            }
+            .left{
+                left:0;
+            }
+            .right{
+                right:0;
+            }
+            .box2{
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+</head>
+<body>
+    
+        <div id="box">
+                <ul id="ul1">
+                     <!-- <li><img src="img/5.jpg" alt=""></li> -->
+                    <li><img src="img/1.jpg" alt=""></li>
+                    <li><img src="img/2.jpg" alt=""></li>
+                    <li><img src="img/3.jpg" alt=""></li>
+                    <li><img src="img/4.jpg" alt=""></li>
+                    <li><img src="img/5.jpg" alt=""></li>
+                    <li><img src="img/1.jpg" alt=""></li>
+                </ul>
+                <ul id="ul2">
+                    <li class="on"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <button class="left"><</button>
+                <button class="right">></button>
+            </div>
+
+            <script src="./jquery-1.11.3.min.js"> </script>
+            <script>
+                var index=0;
+                var timer=null;
+//节流
+                var throttle = function(func, time){
+            var times = Date.now();
+            return function(){
+                var c = this;
+                var a = arguments;
+                var now = Date.now();
+                if(now - times >=time){
+                    func.apply(c,a);
+                    times = Date.now();
+                }
+            }
+        };
+
+                //设置轮播动画
+            function move(){
+                $("#ul1").animate({
+                    "left":-520 *index +"px",
+                },500)
+follow();
+            }
+            //向右滚动点击事件
+            $(".right").click(throttle(goleft,1500));
+            
+             //向右滚动
+            function goright(){
+                if(index==0){
+                    index =$("#ul2 li").length;
+                    $("ul1").css("left", -520 * index +"px")
+
+                }  
+                index--;
+                move();
+            }
+            //向左滚动点击事件
+            $(".left").click(throttle(goright,1500));
+            //向左滚动
+            function goleft(){
+                if(index === $("#ul2 li").length){
+                index = 0;
+                $("#ul1").css("left",0);
+            }
+            index ++;
+            move();
+            }
+            //下标
+            function follow(){
+                $("#ul2 li").eq(index).addClass("on").siblings().removeClass("on");
+            if(index === $("#ul2 li").length){
+                $("#ul2 li").eq(0).addClass("on").siblings().removeClass("on");
+            }
+            }
+            //下标点击移动
+            $("#ul2 li").click(function(){
+                index =$(this).index();
+                move()
+            })
+            timer=setInterval(function(){
+                goleft();
+            },2000)
+            $("#box").mouseover(() => {clearInterval(timer)}).mouseout(() => {timer = setInterval(() => {goleft()},2000)});
+            </script>
+</body>
+</html>
