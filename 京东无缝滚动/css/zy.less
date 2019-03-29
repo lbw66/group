@@ -1,0 +1,277 @@
+main {
+    height: 275px;
+    color: #666;
+    background-color: #f0f3ef;
+    border-top: 30px solid #f0f3ef;
+  }
+  .main-center {
+    margin: 0 auto;
+    width: 1190px;
+    overflow: hidden;
+    background: #fff;
+    height: 275px;
+  }
+  .m-left {
+    position: relative;
+    float: left;
+    width: 190px;
+    height: 275px;
+    background: #e83632;
+    color: #fff;
+  }
+  .kit {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    top: 42px;
+    font-size: 34px;
+  }
+  .flash {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    top: 90px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+  }
+  .lighting {
+    position: absolute;
+    left: 86px;
+    top: 126px;
+    display: block;
+    width: 20px;
+    height: 33px;
+    background-image: url("../img/sprite.png");
+    background-position: -35px -25px;
+  }
+  .finish {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    top: 170px;
+    font-size: 16px;
+  }
+  .time {
+    position: absolute;
+    top: 212px;
+    left: 30px;
+    height: 40px;
+  }
+  .hours {
+    position: relative;
+    float: left;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 5px;
+    span {
+      position: relative;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  .hours::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    height: 1px;
+    background: #e83632;
+  }
+  //分
+  .minutes {
+    position: relative;
+    float: left;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 5px;
+    span {
+      position: relative;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  .minutes::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    height: 1px;
+    background: #e83632;
+  }
+  //秒
+
+  .second {
+    position: relative;
+    float: left;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 5px;
+    span {
+      position: relative;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  .second::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    height: 1px;
+    background: #e83632;
+  }
+
+  //右侧图片
+  .m-right {
+    position: relative;
+float: left;
+width: 799px;
+border-right: solid 1px #f0f0f0;
+height: 275px;
+overflow: hidden;
+  }
+  .m-img {
+    width: 3600px;
+    height: 275px;
+  }
+  .m-btl {
+    position: absolute;
+    top: 110px;
+    border-radius: 0;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin-top: -20px;
+    font-size: 20px;
+    z-index: 2;
+    border: none;
+    outline: none;
+  }
+  .m-btl:hover{
+    background: #999999;
+  }
+  .m-btr:hover{
+    background: #999999;
+  }
+  .m-btr {
+    position: absolute;
+    top: 110px;
+    border-radius: 0;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin-top: -20px;
+    font-size: 20px;
+    z-index: 2;
+    border: none;
+    outline: none;
+    right: 0;
+  }
+  .m-imgall{
+    width: 799px;
+    height: 275px;
+    float: left;
+  }
+  .m-img-1 {
+    content: "";
+    display: block;
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 275px;
+    background: #fff;
+    float: left;
+    width: 199px;
+  }
+  .m-a{
+    color: #666;
+  }
+  .m-a:hover{
+    color: #c81623;
+    opacity: .8;
+    transition: .5s all;
+  }
+  .img-in{
+    position: absolute;
+width: 140px;
+height: 140px;
+left: 50%;
+margin-left: -70px;
+top: 40px;
+img{
+  width: 100%;
+height: 100%;
+}
+  }
+  .m-text{
+    position: absolute;
+top: 190px;
+left: 0;
+width: 160px;
+padding: 0 15px;
+line-height: 30px;
+-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+text-align: center;
+  }
+  .price{
+    position: absolute;
+left: 15px;
+top: 230px;
+width: 160px;
+height: 20px;
+padding: 1px;
+background: #e6382f;
+line-height: 20px;
+  }
+  .mr{
+    float: left;
+width: 80px;
+height: 20px;
+text-align: center;
+color: #fff;
+font-size: 14px;
+font-weight: bold;
+  }
+  .mw{
+    float: left;
+width: 80px;
+height: 20px;
+background: #fff;
+text-align: center;
+color: #b7bcb8;
+font-size: 12px;
+text-decoration: line-through;
+  }
+
+  //最右侧轮播图
+  .rightest{
+    position: relative;
+float: left;
+width: 180px;
+height: 260px;
+padding: 8px 10px 7px;
+  }
