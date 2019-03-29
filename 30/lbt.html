@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        
+        #container {
+            margin: 20px;
+            width: 600px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #list {
+            /*七张图片*/
+            width: 4200px;
+            height: 400px;
+            position: absolute;
+        }
+        
+        #list img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+        
+        #buttons {
+            position: absolute;
+            left: 252px;
+            border-radius: 10px;
+            height: 15px;
+            width: 85px;
+            z-index: 2;
+            bottom: 20px;
+            right: 100px;
+            background-color: rgba(255, 255, 255, .3);
+        }
+        
+        #buttons span {
+            cursor: pointer;
+            float: left;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            height: 10px;
+            width: 10px;
+            margin-right: 5px;
+            background: #333;
+        }
+        /*小圆点的样式*/
+        
+        .b_list ul {
+            position: absolute;
+            right: 40px;
+            bottom: 30px;
+        }
+        /*这里的ul根据banner定位*/
+        
+        .b_list ul li {
+            width: 15px;
+            height: 15px;
+            float: left;
+            background: #333;
+            margin-left: 20px;
+            border-radius: 50px;
+            border: 2px solid white;
+        }
+        
+        .b_list ul .l_hover,
+        .b_list ul .l_click {
+            border: 2px solid #333;
+            background: white
+        }
+        /*两边耳朵的样式*/
+        
+        .b_btn div {
+            position: absolute;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 25px;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            top: 50%;
+            margin-top: -80px;
+            cursor: pointer;
+        }
+        
+        .b_btn .b_left {
+            left: 0;
+            text-align: center
+        }
+        /*移到左边*/
+        
+        .b_btn .b_right {
+            right: 0;
+            text-align: center
+        }
+        /*移到右边*/
+    </style>
+
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="list" style="left:-600px">
+            <img src="lbttp/taobao5.jpg" alt="">
+            <img src="lbttp/taobao1.jpg" alt="">
+            <img src="lbttp/taobao2.jpg" alt="">
+            <img src="lbttp/taobao3.jpg" alt="">
+            <img src="lbttp/taobao4.jpg" alt="">
+            <img src="lbttp/taobao5.jpg" alt="">
+            <img src="lbttp/taobao1.jpg" alt="">
+        </div>
+        <div class="b_list">
+            <ul>
+                <li class="l_click"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="b_btn">
+            <div class="b_left">＜</div>
+            <div class="b_right">＞</div>
+        </div>
+
+    </div>
+    </div>
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script>
+        var $li = $(".b_list ul li"); //获取.b_list里面的所有li
+        var len = $li.length - 1;
+        var _index = 0; //li的索引
+        var $img = $("#list"); //同上
+        var $btn = $(".b_btn div");
+
+
+        function play() {
+            $li.eq(_index).addClass("l_click").siblings().removeClass("l_click");
+            $img.eq(_index).animate({
+                "left": _index * -600,
+            }, 500);
+
+        }
+
+
+        $li.hover(function() {
+            $(this).addClass("l_hover"); //li添加样式
+        }, function() {
+            $(this).removeClass("l_hover"); //li删除样式
+        });
+
+
+
+        //点击事件
+        $li.click(function() {
+            _index = $(this).index();
+            play();
+        });
+
+        //两边的点击事件
+        $btn.click(function() {
+            var index = $(this).index();
+            if (index) {
+                _index++;
+                if (_index > len) {
+                    _index = 0;
+                }
+                play();
+            } else {
+                _index--;
+                if (_index < 0) {
+                    _index = len;
+                }
+                play();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
