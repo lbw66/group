@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图jq</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            /* overflow: hidden; */
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 50px auto 0;
+        }
+
+        #ul1 {
+            position: relative;
+            overflow: hidden;
+            width: 3120px;
+            height: 280px;
+            /* transition: .5s margin-left; */
+        }
+
+        #ul1 li {
+            float: left;
+            width: 520px;
+            height: 280px;
+        }
+
+        img {
+            width: 520px;
+            height: 280px;
+        }
+
+        h1,
+        h2 {
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            height: 50px;
+            width: 30px;
+            background: orange;
+            font-size: 34px;
+            cursor: pointer;
+        }
+
+        h2 {
+            right: 0px;
+        }
+
+        #ul2 {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            width: 200px;
+            margin-left: -100px;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #ul2 li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .no {
+            transition: none;
+        }
+
+        #ul2 .on {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul1">
+            <li><img src="img/tb-1.jpg" alt=""></li>
+            <li><img src="img/tb-2.jpg" alt=""></li>
+            <li><img src="img/tb-3.jpg" alt=""></li>
+            <li><img src="img/tb-4.jpg" alt=""></li>
+            <li><img src="img/tb-5.jpg" alt=""></li>
+            <li class="no"><img src="img/tb-1.jpg" alt=""></li>
+        </ul>
+        <ul id="ul2">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <h1><</h1>
+        <h2>></h2>
+    </div>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function(){
+
+            function trottle(func,time){
+                var timer =null;
+                return function(){
+                    clearTimeout(timer);
+                    var context = this;
+                    var args = arguments;
+                    setTimeout(function(){
+                        func.apply(context,args);
+                    },time);
+                }
+            }
+
+            var index = 0;
+
+            $("h2").click(function(){
+                trottle(goLeft,700)
+            });
+            $("h1").click(goRight);
+            // 向左滚动
+            function goLeft(){
+                // 瞬移
+                if(index === $("#ul1 li").length-1){
+                    index = 0;
+                    $("#ul1").css("left",0);
+                }
+                index++;
+                move();
+                indexShow();
+            }
+
+            //向右滚动
+            function goRight(){
+                if(index === 0){
+                    index = $("#ul1 li").length - 1;
+                    $("#ul1").css("left", -520*index + "px");
+                }
+                index --;
+                move();
+                indexShow();
+            }
+
+            $("#ul2 li").click(function (){
+                index = $(this).index();
+                move();
+            })
+            // 下标跟随图片移动
+            function indexShow(){
+                $("#ul2 li").eq(index).addClass("on").siblings().removeClass("on");
+                // console.log($("#ul1 li").index())
+                if(index === $("#ul1 li").length - 1){
+                    console.log(1)
+                    $("#ul2 li").eq(0).addClass("on").siblings().removeClass("on");
+                }
+            }
+            // 轮播图移动距离
+            function move(){
+                $("#ul1").animate({
+                    "left": -520 * index + "px",
+                },500)
+                indexShow();
+            }
+        })
+    </script>
+</body>
+</html>
