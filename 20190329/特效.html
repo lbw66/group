@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="font/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: relative;
+            margin: 200px auto;
+            width: 590px;
+            height: 470px;
+        }
+
+        ul {
+            width: 590px;
+            height: 470px;
+        }
+
+        ul li {
+            position: absolute;
+            width: 590px;
+            height: 470px;
+            list-style: none;
+            float: left;
+        }
+
+        ol {
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            width: 590px;
+            height: 30px;
+        }
+
+        ol li {
+            margin: 0 5px;
+            list-style: none;
+            float: left;
+            width: 10px;
+            border-radius: 50%;
+            height: 10px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .show {
+            opacity: 1;
+            transition: all 1s;
+        }
+
+        .hide {
+            opacity: 0;
+            transition: all 1s;
+        }
+
+        .red {
+            background: #00A782;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            margin: -25px 0 0 0;
+            text-align: center;
+            line-height: 50px;
+            z-index: 199;
+            width: 50px;
+            height: 50px;
+            color: #00A782;
+            background: rgba(15, 15, 15, .5);
+
+        }
+
+        span:hover {
+            background: orangered;
+            color: yellow;
+        }
+
+        #prev {
+            border-bottom-right-radius: 30%;
+            border-top-right-radius: 30%;
+            top: 50%;
+        }
+
+        #next {
+            border-bottom-left-radius: 30%;
+            border-top-left-radius: 30%;
+            top: 50%;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li class="show"><img src="imges/1.jpg" alt=""></li>
+        <li><img src="imges/2.jpg" alt=""></li>
+        <li><img src="imges/3.jpg" alt=""></li>
+        <li><img src="imges/4.jpg" alt=""></li>
+        <li><img src="imges/5.jpg" alt=""></li>
+        <li><img src="imges/6.jpg" alt=""></li>
+        <li><img src="imges/7.jpg" alt=""></li>
+        <li><img src="imges/8.jpg" alt=""></li>
+    </ul>
+    <ol>
+        <li class="red"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <span id="prev" class="icon-xiazai6 iconfont"></span>
+    <span id="next" class="iconfont icon-arrow"></span>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+<script>
+    $(function () {
+        let $timer = null;
+        let $indexImg = 0;
+        clearInterval($timer);
+
+        function $timeOut() {
+            $timer = setInterval(function () {
+                $indexImg++;
+                if ($indexImg === $('ul li').length) {
+                    $indexImg = 0;
+                }
+                $('ul li').eq($indexImg).addClass('show').removeClass('hide').siblings().removeClass('show').addClass('hide');
+                $('ol li').eq($indexImg).addClass('red').siblings().removeClass('red');
+            }, 2000)
+        }
+
+        $timeOut();
+        $('.box').mouseover(function () {
+            clearInterval($timer)
+            $('#prev').css({display: "block"});
+
+            $('#next').css({display: "block"});
+        });
+        $('.box').mouseleave(function () {
+            $timeOut();
+            $('#prev').css({display: "none"});
+
+            $('#next').css({display: "none"});
+        });
+        $("ol li").each(function (index) {
+            $(this).mouseover(function () {
+                $('ul li').eq(index).addClass('show').removeClass('hide').siblings().removeClass('show').addClass('hide');
+                $("ol li").eq(index).addClass('red').siblings().removeClass('red');
+                $indexImg = index;
+            })
+        });
+        $('#prev').click(function () {
+            $indexImg--;
+            if ($indexImg < 0) {
+                $indexImg = $('ul li').length - 1;
+            }
+            $('ul li').eq($indexImg).addClass('show').removeClass('hide').siblings().removeClass('show').addClass('hide');
+            $('ol li').eq($indexImg).addClass('red').siblings().removeClass('red');
+        });
+        $('#next').click(function () {
+            $indexImg++;
+            if ($indexImg === $('ul li').length) {
+                $indexImg = 0;
+            }
+            $('ul li').eq($indexImg).addClass('show').removeClass('hide').siblings().removeClass('show').addClass('hide');
+            $('ol li').eq($indexImg).addClass('red').siblings().removeClass('red');
+        });
+    })
+</script>
+</body>
+</html>

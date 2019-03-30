@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>秒杀</title>
+    <link rel="stylesheet" href="font/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background: #f0f3ef;
+        }
+
+        .warp {
+            margin: 200px auto;
+            width: 1190px;
+            height: 275px;
+        }
+
+        .timeOut {
+            position: relative;
+            float: left;
+            width: 190px;
+            height: 275px;
+            background: #e83632;
+            color: #fff;
+        }
+
+        .timeOut h3 {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            top: 42px;
+            font-size: 34px;
+            font-weight: normal;
+        }
+
+        .heads {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            top: 90px;
+            color: #f19999;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 20px;
+        }
+
+        .timeOut i {
+            position: absolute;
+            left: 86px;
+            top: 126px;
+            display: block;
+            width: 20px;
+            height: 33px;
+            background-image: url(imges/sprite.seckill.png);
+            background-position: -35px -25px;
+        }
+
+        .last {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            top: 170px;
+            font-size: 16px;
+        }
+
+        .cd {
+            position: absolute;
+            top: 212px;
+            left: 30px;
+            height: 40px;
+        }
+
+        .cd_item {
+            position: relative;
+            float: left;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            background-color: #2f3430;
+            margin-right: 5px;
+            line-height: 40px;
+            font-size: 20px;
+        }
+
+        .cd_item:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            top: 50%;
+            height: 1px;
+            background: #e83632;
+        }
+
+
+        .leftGo ul {
+            left: -800px;
+            position: absolute;
+            width: 4000px;
+            background: #fff;
+            height: 275px;
+        }
+
+        .leftGo li {
+            width: 200px;
+            position: relative;
+            display: block;
+            height: 275px;
+            text-align: center;
+            float: left;
+        }
+
+        .leftGo li img {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            left: 50%;
+            margin-left: -70px;
+            top: 40px;
+        }
+
+        .leftGo p {
+            position: absolute;
+            top: 190px;
+            left: 0;
+            width: 160px;
+            padding: 0 15px;
+            line-height: 30px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .sk_item_price_new {
+            float: left;
+            width: 80px;
+            height: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .sk_item_price_origin {
+            float: left;
+            width: 80px;
+            height: 20px;
+            background: #fff;
+            text-align: center;
+            color: #b7bcb8;
+            font-size: 12px;
+            text-decoration: line-through;
+        }
+
+        .nie {
+            position: absolute;
+            left: 15px;
+            top: 230px;
+            width: 160px;
+            height: 20px;
+            padding: 1px;
+            background: #e6382f;
+            line-height: 20px;
+        }
+
+        .mod_price i {
+            margin-right: 3px;
+            font-family: arial, sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            font-style: normal;
+        }
+
+        li:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 275px;
+            background: #f0f0f0;
+        }
+
+        .leftGo > span {
+            position: absolute;
+            margin: -25px 0 0 0;
+            text-align: center;
+            line-height: 50px;
+            z-index: 199;
+            width: 50px;
+            height: 50px;
+            color: #00A782;
+            background: rgba(15, 15, 15, .5);
+        }
+
+        span:hover {
+            background: orangered;
+            color: yellow;
+        }
+
+
+        .prev {
+            border-bottom-right-radius: 30%;
+            border-top-right-radius: 30%;
+            top: 50%;
+        }
+
+        .next {
+            border-bottom-left-radius: 30%;
+            border-top-left-radius: 30%;
+            top: 50%;
+            right: 0;
+        }
+
+        .leftGo {
+            overflow: hidden;
+            position: relative;
+            float: left;
+            width: 800px;
+            height: 275px;
+        }
+
+        .rightGo {
+            overflow: hidden;
+            position: relative;
+            float: left;
+            width: 180px;
+            height: 260px;
+            margin: 8px 10px 7px;
+            background: #fff;
+        }
+
+        .rightGo ul {
+            position: absolute;
+            width: 300%;
+            height: 100%;
+        }
+
+        .rightGo ul li {
+            overflow: hidden;
+            width: 180px;
+            height: 260px;
+            float: left;
+        }
+
+        .ltb-index {
+            position: absolute;
+            left: 50%;
+            margin-left: -30px;
+            width: 180px;
+            height: 10px;
+            bottom: 10px;
+
+        }
+
+        .ltb-index li {
+            list-style: none;
+            margin-left: 10px;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            float: left;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .ltb-index .red {
+            background: orangered;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <div class="timeOut">
+        <h3>京东秒杀</h3>
+        <p class="heads">FLASH DEALS</p>
+        <i></i>
+        <p class="last">本场距离结束还剩</p>
+        <div class="cd">
+            <div class="cd_item cd_hour"><span class="cd_item_txt"></span></div>
+            <div class="cd_item cd_minute"><span class="cd_item_txt"></span></div>
+            <div class="cd_item cd_second"><span class="cd_item_txt">   </span></div>
+        </div>
+    </div>
+    <div class="leftGo">
+        <ul>
+            <li>
+                <img src="imges/a9.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a10.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a11.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a12.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a1.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a2.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a3.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a4.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a5.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a6.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a7.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a8.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a9.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a10.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a11.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a12.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a1.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a2.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a3.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+            <li>
+                <img src="imges/a4.webp" alt="">
+                <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+                <div class="nie">
+                    <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                    <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+                </div>
+            </li>
+        </ul>
+        <span class="prev"></span>
+        <span class="next"></span>
+    </div>
+    <div class="rightGo">
+        <ul class="lbt-one">
+            <li><img src="imges/b1.jpg" alt=""></li>
+            <li><img src="imges/b2.jpg" alt=""></li>
+            <li><img src="imges/b1.jpg" alt=""></li>
+        </ul>
+        <ol class="ltb-index">
+            <li class="red"></li>
+            <li></li>
+        </ol>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+<script>
+    $(function () {
+        /**
+         * 节流
+         * @param fn
+         * @param time
+         * @returns {Function}
+         */
+        function thorttol(fn, time) {
+            var value = 0;
+
+            return function () {
+                var self = this;
+                var ags = arguments;
+
+                var date = +new Date();
+                if (date - value >= time) {
+                    fn.apply(self, ags);
+                    value = date;
+                }
+            }
+        }
+
+        /*
+        * 自动补0
+        * */
+        function size(num) {
+            return num >= 10 ? num : "0" + num;
+        }
+
+        function dao() {
+            setInterval(datae, 1000);
+            datae();
+        }
+
+        dao();
+
+        /**
+         * 倒计时
+         */
+        function datae() {
+            var nowData = new Date();
+            var nexData = new Date("2019/03/29 21:00:00");
+            var nextTime = nexData.getTime();
+            var nowTTime = nowData.getTime();
+            var allTimes = nextTime - nowTTime;
+            var sSen = allTimes / 1000;
+            var s = size(parseInt(sSen / 3600 % 24));
+            var f = size(parseInt(sSen / 60 % 60));
+            var m = size(parseInt(sSen % 60));
+            $('.cd_hour').text(s);
+            $('.cd_minute').text(f);
+            $('.cd_second').text(m);
+        }
+
+        var $timer = null, indexImg = 1, indexLi = 0, haha = 0, $rTimer;
+        $('.next').click(thorttol(function () {
+            indexImg++;
+            if (indexImg > 4) {
+                indexImg = 2;
+                $(".leftGo ul").css({left: -800 + "px"});
+            }
+            console.log(indexImg);
+            $(".leftGo ul").stop().animate({left: -indexImg * 200 * 4}, 1000);
+        }, 900));
+        $('.prev').click(thorttol(function () {
+            indexImg--;
+            if (indexImg < 0) {
+                indexImg = 2;
+                $(".leftGo ul").css({left: -2400 + "px"});
+            }
+            console.log(indexImg);
+            $(".leftGo ul").stop().animate({left: -indexImg * 200 * 4}, 1000);
+        }, 900));
+
+        function rightG() {
+            $rTimer = setInterval(function () {
+                indexLi++;
+                if (indexLi > 2) {
+                    indexLi = 1;
+                    $(".lbt-one").css({left: -0 + "px"});
+                }
+                haha++;
+                if (haha > 1) {
+                    haha = 0;
+                }
+                $(".lbt-one").stop().animate({left: -indexLi * 180}, 1000);
+                $('.ltb-index li').eq(haha).addClass('red').siblings().removeClass('red');
+                console.log(haha);
+            }, 2000);
+        }
+
+        rightG();
+        $('.rightGo').mouseover(function () {
+            clearInterval($rTimer);
+        });
+        $('.rightGo').mouseleave(function () {
+            rightG();
+        });
+        $('.ltb-index li').click(function () {
+            var indexs = $(this).index();//获取当前索引值
+            if (indexLi > 1) {
+                $(".lbt-one").css({left: -0 + "px"});
+                indexLi = 0;
+            }
+            $(".lbt-one").stop().animate({left: -indexs * 180}, 1000);
+            $(this).addClass('red').siblings().removeClass('red');
+        })
+    })
+</script>
+</body>
+</html>
