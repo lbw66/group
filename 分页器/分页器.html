@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页</title>
+	<script src="page.js"></script>
+</head>
+    <style>
+        body{
+		-webkit-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+		ul,li{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.pageBox{
+			text-align: center;
+            margin: 0 auto;
+            overflow: hidden;
+		}
+		.pageBox>div,.pageBox>ul,.pageBox>ul>li{
+            display: inline-block;
+            font-size: 18px;
+            color: #666;
+		}
+		.pageBox>div,.pageBox>ul>li{
+			background-color: #f2f2f2;
+			line-height: 60px;
+			padding: 0 15px;
+			box-sizing: border-box;
+			margin: 0 3px;
+		}
+		.size,.pageBox>ul>li{
+			width: 60px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.Previous::after{
+			content: "<<";
+		}
+		.Next::after{
+			content: ">>";
+		}
+		.pageBox>ul>.active{
+			color: #fff;
+			background-color: #f05033;
+		}
+		.firstPage,.Previous,.Next,.lastPage{
+			cursor: pointer;
+		}
+	</style>
+<body>
+	<div class="pageBox">
+	</div>
+	<input type="file" placeholder="请选择文件111" name="myFile" id="myFile" value="请选择文件111" multiple="multiple"/>
+	<script>
+        new paging({
+        	pageAll: 20,//总页数
+        	showPage: 8,//显示页数
+        	boxName: ".pageBox",//页码容器
+        	startPage: 2,//默认页面
+        	callback:function(num){//返回页码
+               console.log(num);
+        	}
+        })
+	</script>
+</body>
+</html>
