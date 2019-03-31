@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css" rel="stylesheet">
+        .page {
+            display: none;
+        }
+
+        #pagnation a {
+            padding-right: 5px;
+        }
+
+        .current {
+            color: blue;
+        }
+
+        #pagnation {
+            margin-top: 20px;
+        }
+
+        .numlink,
+        #prev,
+        #next {
+            background-color: #F5F5F5;
+            border: 1px solid #EBEBEB;
+            color: #0072BC;
+            font-weight: normal;
+            margin-left: 10px;
+            padding: 2px 7px;
+            text-decoration: none;
+            width: 22px;
+            ;
+        }
+
+        .current {
+            background-color: #DDEEFF;
+            border: 1px solid #BBDDFF;
+            color: #0072BC;
+            cursor: default;
+            margin-left: 10px;
+            padding: 2px 7px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div class="page">
+            1
+        </div>
+        <div class="page">
+            2
+        </div>
+        <div class="page">
+            3
+        </div>
+        <div class="page">
+            4
+        </div>
+        <div class="page">
+            5
+        </div>
+        <div id="pagnation">
+        </div>
+    </div>
+    <script type="text/javascript" src="./jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        var pages = $('.page');
+        var nav = $('#pagnation');
+
+        function createLinks() {
+            nav.append('<a href="#" id="prev">上一页</a>');
+            for (var i = 0; i < $('.page').length; i++) {
+                nav.append('<a href="#" class="numlink">' + (i + 1) + '</a>');
+            }
+            nav.append('<a href="#" id="next">下一页</a>');
+        }
+
+        function process(now, p,y) {
+            $('.page:eq(' + now + ')').css('display', 'block');
+            $('.numlink:eq(' + now + ')').addClass('current');
+            var total = parseInt($('.page').length - 1);
+            if (now == 0) {
+                p.hide();
+               y.show();
+            } else if (now == total) {
+                p.show();
+               y.hide();
+            } else {
+                p.show();
+               y.show();
+            }
+        }
+
+        function hideAll() {
+            pages.css('display', 'none');
+            $('.numlink').removeClass('current');
+        }
+        $(document).ready(function () {
+            //set the first one display none
+            $('.page:eq(0)').css('display', 'block');
+            createLinks();
+            $('.numlink:eq(0)').addClass('current');
+            var y = $('#next');
+            var p = $('#prev');
+            var _Link = $('.numlink');
+            p.hide();
+            var now = parseInt($('.numlink').index($('.current')));
+           y.click(function () {
+                hideAll();
+                process(now + 1, p,y);
+                now = parseInt($('.numlink').index($('.current')));
+            });
+            p.click(function () {
+                hideAll();
+                process(now - 1, p,y);
+                now = parseInt($('.numlink').index($('.current')));
+            })
+            _Link.click(function () {
+                var that = $(this);
+                hideAll();
+                var which = that.index() - 1;
+                process(which, p,y);
+                now = parseInt($('.numlink').index($('.current')));
+            })
+        })
+    </script>
+</body>
+
+</html>
