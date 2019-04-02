@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝gogogo</title>
+    <style>
+        *{
+            margin: 0px;padding: 0px;
+        }
+        ul{
+            list-style: none;
+        }
+        #box{
+            position: relative;
+            width: 520px;height: 280px;
+            border: 1px solid red;
+            margin: 100px auto;
+        }
+        #ul1{
+            left: -520px;
+            position: relative;
+            width: 3640px;
+            display: flex;
+        }
+        #ul2{
+            position: relative;
+            top: -34px;
+            margin: 0 auto;
+            width: 150px;   
+            display: flex;
+            justify-content: space-between;
+        }
+        #ul2 li{
+            width: 15px;height: 15px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        #ul2 .on{
+            background:linear-gradient(to right,yellow,skyblue);
+        }
+        button{
+            position:absolute;
+            top: 50%;
+            border: none;
+            outline: none;
+            width: 20px;height: 30px;
+            background: rgba(0,0,0,.3);
+            color: #fff;
+        }
+        .left{
+            left:0;
+        }
+        .right{
+            right:0;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul1">
+            <li><img src="img/tb-5.jpg" alt=""></li>
+            <li><img src="img/tb-1.jpg" alt=""></li>
+            <li><img src="img/tb-2.jpg" alt=""></li>
+            <li><img src="img/tb-3.jpg" alt=""></li>
+            <li><img src="img/tb-4.jpg" alt=""></li>
+            <li><img src="img/tb-5.jpg" alt=""></li>
+            <li><img src="img/tb-1.jpg" alt=""></li>
+        </ul>
+        <ul id="ul2">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <button class="left"><</button>
+        <button class="right">></button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+    // 节流
+    var throttle = function(func, time){
+        var times = Date.now();
+        return function(){
+            var c = this;
+            var a = arguments;
+            var now = Date.now();
+            if(now - times >=time){
+                func.apply(c,a);
+                times = Date.now();
+            }
+        }
+    };
+    var banner = throttle
+    var index = 1;
+    $(".right").click(function(){
+        move(++index);
+    })
+    $(".left").click(function(){
+        move(--index);
+    })
+    $("#ul2 li").click(function(){
+        index = $(this).index()+1
+        move(index)
+    })
+
+    function move(cIndex){
+
+        $("#ul1").stop(true,true).animate({
+            left: -520 * cIndex
+        },400,function(){
+
+            // 无缝轮播
+            if(index == 6){
+                index = 1;
+                $("#ul1").css("left",-520);
+            }
+            if(index == 0){
+                index = 5;
+                $("#ul1").css("left",-520*5);
+            }
+
+        });
+        
+        // 下标跟随
+        if(index == 0){
+            $("#ul2 li").eq(4).addClass("on").siblings().removeClass("on");
+        }else if(index == 6){
+            $("#ul2 li").eq(0).addClass("on").siblings().removeClass("on");
+        }else{
+            $("#ul2 li").eq(index - 1).addClass("on").siblings().removeClass("on");
+        }
+
+    }
+    </script>
+</body>
+</html>
