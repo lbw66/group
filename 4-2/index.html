@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        form {
+            margin: 100px auto;
+        }
+        
+        .state1 {
+            color: #333;
+        }
+        
+        .state2 {
+            color: aquamarine;
+        }
+        
+        .state3 {
+            color: red;
+        }
+        
+        .state4 {
+            color: skyblue;
+        }
+        
+        button {
+            width: 60px;
+            height: 40px;
+            border: none;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 100px;
+            position: relative;
+        }
+        
+        a {
+            position: absolute;
+            display: inline-block;
+            width: 60px;
+            height: 40px;
+        }
+        
+        .ouwk {
+            width: 100px;
+            height: 50px;
+            margin-left: 100px;
+            margin-bottom: 40px;
+            font-size: 30px;
+        }
+        
+        .wd {
+            width: 60px;
+            height: 40px;
+            border: none;
+            height: 40px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(function() {
+            var ok1 = false;
+            var ok2 = false;
+            var ok3 = false;
+            var ok4 = false;
+            //验证用户名
+            $('input[name="username"]').focus(function() {
+                $(this).next().text('请输入3-12用户名').css({
+                    "color": "#333"
+                })
+            })
+            $('input[name="username"]').blur(function() {
+                if ($(this).val().length >= 3 && $(this).val().length <= 12 && $(this).val() != '') {
+                    $(this).next().text('输入成功').css({
+                        "color": "skyblue"
+                    })
+                    ok1 = true;
+                } else {
+                    $(this).next().text('输入失败，请输入3-12用户名').css({
+                        "color": "red"
+                    })
+                }
+            })
+
+            //验证密码
+            $('input[name="password"]').focus(function() {
+                $(this).next().text('请输入3-12密码').css({
+                    "color": "#333"
+                })
+            })
+            $('input[name="password"]').blur(function() {
+                if ($(this).val().length >= 3 && $(this).val().length <= 12 && $(this).val() != '') {
+                    $(this).next().text('输入成功').css({
+                        "color": "skyblue"
+                    })
+                    ok2 = true;
+                } else {
+                    $(this).next().text('输入失败，请输入3-12密码').css({
+                        "color": "red"
+                    })
+                }
+            })
+
+
+            //第二验证密码
+            $('input[name="repass"]').focus(function() {
+                $(this).next().text('请输入第二次3-12密码').css({
+                    "color": "#333"
+                })
+            })
+            $('input[name="repass"]').blur(function() {
+                if ($(this).val().length >= 3 && $(this).val().length <= 12 && $(this).val() != '' && $('input[name="password"]').val().length == $(this).val().length) {
+                    $(this).next().text('输入成功，上下一致').css({
+                        "color": "skyblue"
+                    })
+                    ok3 = true;
+                } else {
+                    $(this).next().text('输入失败，请输入和上面一致的密码').css({
+                        "color": "red"
+                    })
+                }
+            })
+
+
+
+            //验证码
+            $(".wd").click(function() {
+                function rc() {
+                    return parseInt(Math.random() * 256);
+                }
+                var yzm = document.getElementsByClassName("ouwk")[0];
+                yzm.value = "";
+                var sj = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                for (var i = 0; i < 4; i++) {
+                    var a = Math.round(Math.random() * 36);
+                    $(".ouwk").css("color", "rgb(" + rc() + "," + rc() + "," + rc() + ")");
+                    yzm.value += sj.substring(a - 1, a);
+                }
+
+            })
+            $('input[name="text"]').focus(function() {
+                $(this).next().text('请输入4位验证码').css({
+                    "color": "#333"
+                })
+            })
+            $('input[name="text"]').blur(function() {
+                if ($(".ouwk").val() == $(this).val()) {
+                    $(this).next().text('输入成功').css({
+                        "color": "skyblue"
+                    })
+                    ok4 = true;
+                } else {
+                    $(this).next().text('输入失败，正确的验证码').css({
+                        "color": "red"
+                    })
+                }
+            })
+
+
+            //提交按钮,所有验证通过方可提交
+
+            $('.submit').click(function() {
+                if (ok1 && ok2 && ok3 && ok4) {
+                    $('form').submit();
+                } else {
+                    alert('不能提交')
+                    return false;
+                }
+            });
+
+
+
+
+
+        })
+    </script>
+
+    <form action='https://www.baidu.com/' method='post'>
+        用 户 名:<input type="text" name="username">
+        <span class='state1'>请输入用户名</span><br/><br/> 密　　码:
+        <input type="password" name="password">
+        <span class='state1'>请输入密码</span><br/><br/> 确认密码:
+        <input type="password" name="repass">
+        <span class='state1'>请输入确认密码</span><br/><br/> 验证码:
+        <input type="text" name="text">
+        <span class='state1'>请输入验证码</span>
+
+        <input type="button" name="elas" class="wd" value="换一张">
+        <br/><br/>
+        <input class="ouwk" disabled="disabled"></input>
+        <button class="submit">
+        提交
+    </button >
+    </form>
+</body>
+
+</html>
